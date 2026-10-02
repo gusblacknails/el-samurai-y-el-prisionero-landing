@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ data.site.movieName }}</title>
+    <meta name="description" content="{{ data.site.description }}">
+
+    {# JS and CSS #}
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/Observer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollSmoother.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollToPlugin.min.js"></script>
+    {% if data.config.sorteoFirebase %}
+    <script>
+        window.__SORTEO_FIREBASE__ = {{ data.config.sorteoFirebase | tojson | safe }};
+    </script>
+    {% endif %}
+    <script src="/assets/scripts.js"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    
+    {% if data.config.scrollMode !== "horizontal-snap" and data.config.scrollMode !== "horizontal" %}
+    <script src="https://adso-pictures.b-cdn.net/parallax.js" ></script>
+    {% endif %}
+
+    {# Google Fonts (solo si hay URL) #}
+    {% if data.config.googleFontsURL %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="{{ data.config.googleFontsURL }}" rel="stylesheet">
+    {% endif %}
+
+
+    {# OpenGraph Facebook/General #}
+    <meta property="og:title" content="{{ data.site.movieName }}">
+    <meta property="og:url" content="{{ data.site.url }}">
+    <meta property="og:description" content="{{ data.site.description }}">
+    <meta property="og:type" content=video.movie>
+    <meta property="og:image" content="{{ data.site.image }}">
+    <meta property="og:locale" content="es_ES" />
+
+    {# OpenGraph Twitter #}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ data.site.movieName }}">
+    <meta name="twitter:description" content="{{ data.site.description }}">
+    <meta name="twitter:image" content="{{ data.site.image }}">
+
+
+    <!-- Google tag (gtag.js) - Loaded via scripts.js -->
+    
+   
+</head>
+
+{# Project Styles #}
+<style>
+    :root { 
+        --font-base: {{ data.config.fontBase }}, Arial, Helvetica, sans-serif;
+        --font-display: {{ data.config.fontDisplay }}, sans-serif;
+        --color-base: {{ data.config.colorBase }};
+        --color-accent: {{ data.config.colorAccent }};
+        --color-bg-primary: {{ data.config.colorBgPrimary }};
+        --color-bg-secondary: {{ data.config.colorBgSecondary }};
+    }
+</style>
+
+{# Local fonts (src/assets/fonts) #}
+<style>
+    @font-face {
+        font-family: 'Aroxima';
+        src: url('assets/fonts/Aroxima-Regular.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Aroxima';
+        src: url('assets/fonts/Aroxima-Medium.otf') format('opentype');
+        font-weight: 500;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Aroxima';
+        src: url('assets/fonts/Aroxima-Bold.otf') format('opentype');
+        font-weight: 700;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Univers LT Std';
+        src: url('assets/fonts/UniversLTStd-ThinUltraCn.otf') format('opentype');
+        font-weight: 300;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Minion Pro';
+        src: url('assets/fonts/MinionPro-Regular.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Teko';
+        src: url('assets/fonts/Teko-Regular.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Teko';
+        src: url('assets/fonts/Teko-SemiBold.ttf') format('truetype');
+        font-weight: 600;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Neutraface Condensed Titling';
+        src: url('assets/fonts/Neutraface Condensed Titling.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+    }
+</style>
+
+{# Reveal Animations #}
+<style>
+   @font-face {
+        font-family: 'TrajanPro';
+        src: url('assets/fonts/TrajanPro-Regular.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    .c-ticketing {
+
+        background-color: var(--color-bg-primary) !important;
+    }
+    .c-text-and-image-one__text{
+        width: 76%;
+        margin: 0 auto;
+   }
+
+    #generalitat{
+        background-image: url();
+    }
+    #generalitat img{
+        transform: scale(2) !important;
+       
+    }
+    #proyecto{
+        margin-top: 3em;
+    }
+    .c-hero{
+        height: 100vh !important;
+        min-height: 100vh !important;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    [data-reveal] {
+      will-change: opacity, transform;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.8s ease-out, transform 1.8s ease-out;
+    }
+    
+    [data-reveal].revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .c-text-and-image-one__subtitle, .c-intro__title {
+   
+    font-size: 2.5rem ;
+    
+    }
+    #trailerTitle{
+        color: var(--color-accent) !important;
+    }
+    #trinity{
+        transform: scale(2) !important;
+    }
+    .c-text-and-image-one__subtitle {
+        
+        color: var(--color-accent) !important;
+    }
+    body {
+        font-family: var(--font-display);
+        background-image: url("");
+        color:#ffffff;
+       
+    }
+    #logosDistribution {
+        background-image: url("");
+    }
+   
+    @media (max-width: 1024px) {
+        
+         .c-menu__wrapper {
+            background-image: url("");
+        }
+    }
+   
+    @media (min-width: 1024px) {
+        .c-ticketing {
+            margin-top: 67px;
+        }
+        #proyecto, #reparto{
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        .c-menu__nav {
+            position: relative !important;
+        }
+    .repartoContainer{
+        display:flex;
+        
+        margin-bottom: 3em;
+    }
+    .repartoLeftSide{
+        display:flex;
+        flex-direction: column;
+        width: 1000px;
+        margin-right: 1em;
+        
+    }
+   .repartoLeftSide img {
+    width: 100%;
+    height: auto;
+   }
+   
+
+    .--page-at-top .c-menu {
+        background-image: none;
+        }
+    .--page-at-top .c-menu__anchor:hover {
+        color: var(--color-accent) !important;
+    }
+    .c-menu__nav.--is-active .c-menu__anchor {
+        color: var(--color-base) !important;
+    }
+        }
+
+   .section-screen, #trailer, #movie-details, .c-logos-and-share, .c-menu, .c-menu__nav, .c-custom--interview, footer{
+        background-image: url("https://www.transparenttextures.com/patterns/rice-paper-2.png") !important;
+        background-repeat: repeat;
+    }.c-custom--press{
+        background-image: none !important;
+    }
+    @media (min-width: 1024px) {
+        .c-menu__nav {
+            background-image: none !important;
+        }
+    }
+    .c-hero__title, .c-intro__title, .c-text-centered__title, .c-text-and-image-one__title, .c-text-and-image-two__title, .c-text-and-image-one__subtitle{
+        font-family: var(--font-display);
+        text-transform: uppercase !important;
+        font-size: 2.5rem;
+    }
+    .c-menu__anchor, .c-details__label{
+        font-family: var(--font-display);
+        text-transform: uppercase !important;
+    }
+    .c-menu__anchor {
+        color: var(--color-base) !important;
+    }
+    .--page-at-top .c-menu__anchor {
+        color: var(--color-base) !important;
+    }
+    .c-menu__toggle-text {
+        color: var(--color-base) !important;
+    }
+    .c-menu__toggle .c-menu__toggle-anim {
+        background-color: var(--color-base) !important;
+    }
+    .c-menu__toggle {
+        background: none !important;
+        border: none !important;
+    }
+    .c-logos__title{
+        font-family: var(--font-display);
+        
+    }
+    .c-logos__img-container{
+        
+        margin: 0 auto;
+        display: flex;
+    }
+    .c-hero__button {
+        background-color: transparent !important;
+        font-family: var(--font-display);
+        color: white !important;
+        font-size: 0.9rem !important;
+        text-transform: uppercase !important;
+        border-radius: 8px !important;
+        padding: 0.5rem 1rem !important;
+        border: 2px solid white !important;
+
+    }
+    .c-hero__button:hover {
+        background-color: var(--color-accent) !important;
+        color: white !important;
+        
+    }
+ 
+    .c-menu__anchor:hover {
+        color: var(--color-accent) !important;
+    }
+    @media (min-width: 1024px) {
+        body.hero-logo-not-loaded .c-menu__nav .c-menu__anchor {
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+    }
+    @media(min-width:768px){
+        .c-ticketing__wrapper{
+            height:60vh !important;
+        }
+    }
+
+    @media (max-width: 1024px) {
+            .c-menu__logo img {
+        height: 100%;
+        margin-bottom: 20px;
+
+    } 
+        .c-menu__nav {
+            background-image: url(""); 
+        }
+        .c-menu__logo  {
+            height: 100%;
+            position: relative;
+            top: 11px;
+    }
+    @media (min-width: 1280px) {
+        #proyecto{
+            padding-left: 3em;
+            padding-right: 3em;
+        }
+        .c-intro__text {
+            
+            font-size: x-large;
+        }
+    }
+    #entradas{
+        height:100vh;
+    }
+     @media (max-width: 768px) {
+       .c-hero__button {
+            font-size: 1em !important;
+            border: 1px solid !important;
+        }
+        .c-text-and-image-one__text{
+            width: 90%;
+            margin: 0 auto;
+    }
+    }
+
+    }
+    #fantasticFest{
+        position: relative;
+        top: 21px;
+    }
+
+    
+
+    
+
+    /*  */
+    
+
+
+    
+</style>
+
+<body {% if data.config.scrollMode === "horizontal" or data.config.scrollMode === "horizontal-snap" %}class="horizontal-scroll-active hero-logo-not-loaded" data-scroll-mode="{{ data.config.scrollMode }}"{% endif %}>
+
+
+    {# Menu #}
+    {% import "components/_menu.html" as menu %}
+    {% if data.menu %}
+        {{ menu.component(data.menu, data.site, data.menu.variant) }}
+    {% endif %}
+
+
+    {% if data.config.scrollMode === "horizontal" %}
+    <div id="smooth-wrapper">
+    {% endif %}
+    <main id="top" class="c-main {% if data.config.scrollMode === "horizontal" or data.config.scrollMode === "horizontal-snap" %}horizontal-scroll-wrapper{% endif %}">
+
+        {##
+         # Imports
+        ##}
+
+        {% import "components/_call-to-action.html" as callToAction %}
+        {% import "components/_details.html" as details %}
+        {% import "components/_follow-us.html" as followUs %}
+        {% import "components/_gallery.html" as gallery %}
+        {% import "components/_hero.html" as hero %}
+        {% import "components/_image.html" as image %}
+        {% import "components/_logos.html" as logos %}
+        {% import "components/_logos-and-share.html" as logosAndShare %}
+        {% import "components/_quotes.html" as quotes %}
+        {% import "components/_share.html" as share %}
+        {% import "components/_text-and-image-one.html" as textAndImageOne %}
+        {% import "components/_text-and-image-two.html" as textAndImageTwo %}
+        {% import "components/_text-centered.html" as textCentered %}
+        {% import "components/_ticketing.html" as ticketing %}
+        {% import "components/_video.html" as video %}
+        {% import "components/_sorteo.html" as sorteo %}
+        {% import "components/_awards.html" as awards %}
+        {% import "components/_custom.html" as custom %}
+
+        {##
+         # Macro Logic
+        ##}
+
+        {% for section in data.sections %}
+            <div
+              class="section-screen{% if section.type === 'textCentered' and section.data.id === 'intro' %} section-screen--intro{% endif %}{% if section.type === 'video' %} section-screen--video{% endif %}"
+              {% if section.data and (section.data.id === 'sobre' or section.data.id === 'reparto' or section.data.id === 'entrevista') %}data-has-internal-scroll="true"{% endif %}
+              {% if section.data.backgroundImage %}style="--section-bg-image: url('{{ data.basePath }}assets/{{ section.data.backgroundImage }}')"{% endif %}
+            >
+            {% if section.data.backgroundImage %}
+                <div class="section-bg"></div>
+            {% endif %}
+            <div class="section-screen__content">
+            {% if section.type === "callToAction" %}
+                {{ callToAction.component(section.data, section.variant) }}
+
+            {% elif section.type === "video" %}
+                {{ video.component(section.data, section.variant) }}
+
+            {% elif section.type === "details" %}
+                {{ details.component(section.data, data.site, section.variant) }}
+
+            {% elif section.type === "followUs" %}
+                {{ followUs.component(section.data, section.variant) }}
+
+            {% elif section.type === "gallery" %}
+                {{ gallery.component(section.data, section.variant) }}
+
+            {% elif section.type === "hero" %}
+                {{ hero.component(section.data, data.site, section.variant) }}
+
+            {% elif section.type === "image" %}
+                {{ image.component(section.data, section.variant) }}
+
+            {% elif section.type === "logos" %}
+                {{ logos.component(section.data, section.variant) }}
+
+            {% elif section.type === "logosAndShare" %}
+                {{ logosAndShare.component(section.data, data.site, section.variant) }}
+
+            {% elif section.type === "quotes" %}
+                {{ quotes.component(section.data, section.variant) }}
+
+            {% elif section.type === "sorteo" %}
+                {{ sorteo.component(section.data, data.site, section.variant) }}
+
+            {% elif section.type === "share" %}
+                {{ share.component(section.data, data.site, section.variant) }}
+
+            {% elif section.type === "textAndImageOne" %}
+                {{ textAndImageOne.component(section.data, section.variant) }}
+
+            {% elif section.type === "textAndImageTwo" %}
+                {{ textAndImageTwo.component(section.data, section.variant) }}
+
+            {% elif section.type === "textCentered" %}
+                {{ textCentered.component(section.data, section.variant) }}
+
+            {% elif section.type === "ticketing" %}
+                {{ ticketing.component(section.data, data.site, section.variant) }}
+            {% elif section.type === "awards" %}
+                {{ awards.component(section.data, section.variant) }}
+
+            {% elif section.type === "custom" %}
+                {{ custom.component(section.data, data.site, section.variant) }}
+
+            {% endif %}
+            </div>
+            </div>
+        {% endfor %}
+
+    </main>
+    {% if data.config.scrollMode === "horizontal" %}
+    </div>
+    {% endif %}
+
+
+    {# Footer #}
+    {% import "components/_footer.html" as footer %}
+    {{ footer.component(data.footer, data.site, data.footer.variant) }}
+
+
+</body>
+<style>
+    #logosGene .c-logos__img-container img {
+        transform: scale(4);
+    }
+    div[id^="ticketing-loading-"]{
+        position: absolute;
+        top: 40%;       
+        left: 50%;         
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        color: black;
+        font-weight: bold;
+    }
+    @media (max-width: 1024px) {
+        #logosGene .c-logos__img-container img {
+            transform: scale(2);
+        }
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+{% if data.config.scrollMode !== "horizontal-snap" and data.config.scrollMode !== "horizontal" %}
+<script src="https://adso-pictures.b-cdn.net/parallax.min.js" ></script>
+{% endif %}
+<!-- Arrow scroll functionality loaded via scripts.js -->
+
+
+
+</html>

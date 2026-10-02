@@ -1,0 +1,54 @@
+{#
+    Component Logos
+    ========================================
+
+    "sections": {
+        {
+            "type": "logos",
+            "data": {
+                "id": "reconocimiento", (optional)
+                "title": "Reconocimientos", (optional)
+                "logos": [
+                    {
+                        "image": "assets/images/festival-cannes.png",
+                        "title": "Festival de Cannes",
+                        "URL": "https://www.festival-cannes.com/es/75-editions/retrospective/2022/actualites/articles/sick-of-myself-la-mirada-de-kristoffer-borgli"
+                    },
+                    {
+                        "image": "assets/images/festival-seminci.png",
+                        "title": "Festival Seminci",
+                        "URL": "https://www.seminci.es/en/peliculas/sick-of-myself/"
+                    }
+                ]
+            }
+        },
+    }
+#}
+
+{% macro component(localData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-logos--" + variant %}
+<section class="c-logos {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+
+    {% if localData.title %}
+    <h2 class="c-logos__title">{{ localData.title }}</h2>
+    {% endif %}
+
+    <ul class="u-container u-container--center">
+        {% for logo in localData.logos %}
+        <li class="u-col u-col-px u-col-6 u-sm-col-4 u-lg-col-3 u-xl-col-2">
+
+            {% if logo.URL %}
+                <a href="{{ logo.URL }}" target="_blank" class="c-logos__img-container">
+                    <img id="{{logo.id}}" src="{{ logo.image }}" alt="{{ logo.title }}" />
+                </a>
+            {% else %}
+                <div class="c-logos__img-container">
+                    <img id="{{logo.id}}" src="{{ logo.image }}" alt="{{ logo.title }}" />
+                </div>
+            {% endif %}
+
+        </li>
+        {% endfor %}
+    </ul>
+
+</section>
+{% endmacro %}

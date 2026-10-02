@@ -1,0 +1,31 @@
+{
+  "name": "boilerplate-nunjucks-sass",
+  "description": "A boilerplate project to work with Nunjucks and Sass",
+  "version": "1.0.0",
+  "main": "dev.js",
+  "scripts": {
+    "dev": "node dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/kram08980/boilerplate-nunjucks-sass.git"
+  },
+  "author": "gus@bekamedia.es",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/kram08980/boilerplate-nunjucks-sass/issues"
+  },
+  "homepage": "https://gitlab.com/kram08980/boilerplate-nunjucks-sass#readme",
+  "dependencies": {
+    "autoprefixer": "^10.4.7",
+    "browser-sync": "^2.27.10",
+    "esbuild": "^0.14.49",
+    "firebase": "^9.23.0",
+    "fs-extra": "^10.1.0",
+    "gsap": "^3.12.5",
+    "nunjucks": "^3.2.3",
+    "postcss": "^8.4.14",
+    "sass": "^1.53.0",
+    "swiper": "^9.1.0"
+  }
+}

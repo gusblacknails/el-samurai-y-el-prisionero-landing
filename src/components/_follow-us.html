@@ -1,0 +1,74 @@
+{#
+    Component Follow Us
+    It uses Share Component CSS Styles
+    ========================================
+
+    "sections": [
+        {
+            "type": "followUs",
+            "data": {
+                "id": "followUs", (optional)
+                "title": "Síguenos!", (optional)
+                "background": "assets/images/share-background.jpg" (optional)
+                "twitter": "https://twitter.com/Adso_Films", (optional)
+                "instagram": "https://www.instagram.com/adso_films/", (optional)
+                "facebook": "https://www.facebook.com/adsofilms/", (optional)
+                "youtube": "https://www.youtube.com/@ADSOFILMS/featured" (optional)
+            }
+        }
+    ]
+#}
+
+{% macro component(localData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-follow-us--" + variant %}
+<section class="c-share c-follow-us {{ variantClass }}" id="{{ localData.id }}" {% if localData.background %}style="background-image: url('{{ localData.background }}');"{% endif %} data-gsap-variant="{{ variant }}">
+
+    <div class="u-container u-container--center">
+
+        {% if localData.title %}
+        <div class="u-col u-col-px u-col-12">
+            <h2 class="c-share__title">{{ localData.title }}</h2>
+        </div>
+        {% endif %}
+
+        <div class="u-col u-col-px u-col-12">
+            <ul class="c-share__icons-list">
+
+                {% if localData.twitter %}
+                <li class="c-share__icon">
+                    <a href="{{ localData.twitter }}" target="_blank" class="c-share__anchor" title="Síguenos en Twitter">
+                        {% include 'components/svg/twitter.svg' %}
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if localData.instagram %}
+                <li class="c-share__icon">
+                    <a href="{{ localData.instagram }}" target="_blank" class="c-share__anchor" title="Síguenos en Instagram">
+                        {% include 'components/svg/instagram.svg' %}
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if localData.facebook %}
+                <li class="c-share__icon">
+                    <a href="{{ localData.facebook }}" target="_blank" class="c-share__anchor" title="Síguenos en Facebook">
+                        {% include 'components/svg/facebook.svg' %}
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if localData.youtube %}
+                <li class="c-share__icon">
+                    <a href="{{ localData.youtube }}" target="_blank" class="c-share__anchor" title="Síguenos en YouTube">
+                        {% include 'components/svg/youtube.svg' %}
+                    </a>
+                </li>
+                {% endif %}
+
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+{% endmacro %}

@@ -1,0 +1,30 @@
+//
+// Body
+// ================================================================================
+
+
+body {
+
+  background-color: var(--color-bg-primary);
+
+  font-family: var(--font-base);
+  font-size: var(--fontSize-160);
+  line-height: var(--lineHeight-140);
+  color: var(--color-base);
+  
+  overflow-x: hidden;
+  width: 100%;
+}
+
+// Títulos: h2 = Aroxima Bold, h3 = Aroxima Regular
+h2 {
+  font-weight: 700;
+
+  @media (max-width: 767px) {
+    font-size: 1.125rem !important;
+  }
+}
+
+h3 {
+  font-weight: 400;
+}

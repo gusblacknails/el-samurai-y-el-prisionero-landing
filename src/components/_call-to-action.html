@@ -1,0 +1,46 @@
+{#
+    Component Call to Action
+    ========================================
+
+    "sections": {
+        {
+            "type": "callToAction",
+            "data": {
+                "id": "call-to-action", (optional)
+                "subtitle": "Call To Action", (optional)
+                "title": "Sigue los sorteos en Instagram y gana diferentes premios",
+                "imageMobile": "assets/images/hero--mobile.jpg",
+                "imageDesktop": "assets/images/call-to-action.jpg",
+                "linkText": "¡Apúntame!",
+                "linkURL": "https://www.instagram.com/adso_films/?hl=en"
+            }
+        },
+    }
+#}
+
+{% macro component(localData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-call-to-action--" + variant %}
+<aside class="c-call-to-action {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+
+    <div class="c-call-to-action__image">
+        <picture>
+            <source media="(max-width: 639px)" srcset=" {{ localData.imageMobile }}" />
+            <source media="(min-width: 640px)" srcset=" {{ localData.imageDesktop }}" />
+            <img src=" {{ localData.imageDesktop }}" alt="{{ localData.title }}" />
+        </picture>
+        <div class="c-call-to-action__gradient"></div>
+    </div>
+
+    <div class="c-call-to-action__content">
+        <div class="c-call-to-action__text">
+            {% if localData.subtitle %}
+            <h3 class="c-call-to-action__subtitle">{{ localData.subtitle }}</h3>
+            {% endif %}
+            <h2 class="c-call-to-action__title">{{ localData.title }}</h2>
+            <a href="{{ localData.linkURL }}" target="_blank" class="c-call-to-action__button">
+                {{ localData.linkText }}
+            </a>
+        </div>
+    </div>
+
+</aside>
+{% endmacro %}

@@ -1,0 +1,66 @@
+{# Component Hero ======================================== "sections": { {
+"type": "hero", "data": { "id": "hero", (optional) "image": { "mobile":
+"assets/images/hero--mobile.jpg", "desktop": "assets/images/hero--desktop.jpg"
+}, "video": "assets/videos/placeholder", (optional, no file extension)
+"heroLogo": "assets/images/hero--logo.png", (optional) "button": [ { "text":
+"Tráiler", (optional) "url": "#trailer", (optional) "target": "_blank"
+(optional) }, { "text": "Ticketing", (optional) "url": "#ticketing", (optional)
+"target": "_blank" (optional) }, ] } }, } #} {% macro component(localData,
+siteData, variant) %} {% if localData.heroLogo %} {% set hasLogoClass =
+"c-hero--has-info" %} {% endif %} {% set variant = variant | default('default') %} {% set variantClass = "c-hero--" + variant %}
+
+<header class="c-hero {{ hasLogoClass }} {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+  <div class="c-hero__inner">
+    <div class="c-hero__bg">
+      {% if localData.image.mobile and localData.image.desktop %}
+      <picture class="c-hero__bg-image">
+        <source
+          media="(max-width: 767px)"
+          srcset="{{ localData.image.mobile }}"
+        />
+        <source
+          media="(min-width: 768px)"
+          srcset="{{ localData.image.desktop }}"
+        />
+        <img
+          src=" {{ localData.image.desktop }}"
+          alt="{{ siteData.movieName }}"
+        />
+      </picture>
+      {% endif %} {% if localData.video %}
+      <div class="c-hero__bg-video">
+        <video autoplay muted playsinline loop>
+          <source src="{{ localData.video }}.webm" type="video/webm" />
+          <source src="{{ localData.video }}.mp4" type="video/mp4" />
+          <source src="{{ localData.video }}_safari.mp4" type="video/mp4" />
+        </video>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if localData.heroLogo or (localData.button.text and localData.button.url)%}
+    <div class="c-hero__info">
+      {% if localData.heroLogo %}
+      <div class="heroTitleWrapper">
+        
+       <img src=" {{ localData.heroLogo }}" alt="{{ siteData.movieName }}" /> 
+      </div>
+      {% endif %} {% if localData.buttons %}
+      <div class="c-hero__buttons-wrapper">
+        {% for button in localData.buttons %}
+        <a
+          href="{{ button.url }}"
+          target="{{ button.target }}"
+          class="c-hero__button"
+        >
+          {{ button.text }}
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+    </div>
+    {% endif %}
+  </div>
+</header>
+{% endmacro %}

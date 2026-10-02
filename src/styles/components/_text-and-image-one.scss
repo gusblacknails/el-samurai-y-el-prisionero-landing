@@ -1,0 +1,43 @@
+//
+// Components / Details
+// ==========================================================================
+
+
+.c-text-and-image-one {
+  @include section-margins;
+}
+
+
+.c-text-and-image-one--reverse .u-container {
+  @include breakpoint(md) {
+    flex-direction: row-reverse;
+  }
+}
+
+
+.c-text-and-image-one__image {
+  margin-bottom: var(--space-32);
+}
+
+
+.c-text-and-image-one__subtitle {
+  margin-bottom: var(--space-2);
+  @include typo-legend;
+  color: var(--color-base);
+}
+
+
+.c-text-and-image-one__title {
+  margin-bottom: var(--space-24);
+
+  font-family: var(--font-display);
+  font-size: var(--fontSize-40);
+  color: var(--color-accent);
+  line-height: var(--lineHeight-120);
+}
+
+
+.c-text-and-image-one__text {
+  line-height: 1.6;
+  
+}

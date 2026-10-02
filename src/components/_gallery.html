@@ -1,0 +1,94 @@
+{#
+    Component Gallery
+    ========================================
+    Vertical full-screen slider with GSAP
+#}
+
+{% macro component(localData, variant) %} {% set variant = variant | default('1') %}
+<section class="c-gallery-section c-gallery-section--{{ variant }}" id="{{ localData.id }}" data-section="gallery" data-gsap-variant="{{ variant }}">
+    {% if localData.title %}
+    <div class="u-container">
+        <div class="u-col u-col-px u-col-12">
+            <h2 class="c-gallery-section__title">
+                {{ localData.title }}
+            </h2>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if variant == '2' %}
+    {# Observer variant #}
+    <div class="c-gallery-section__wrapper c-gallery-section__wrapper--2">
+        <div class="c-gallery-section__main">
+            {% for image in localData.images %}
+            <img class="c-gallery-section__pic" src="{{ image.image }}" alt="{{ image.title }}">
+            {% endfor %}
+        </div>
+        
+        <svg class="c-gallery-section__menu" width="180" height="60">
+            <g class="c-gallery-section__boxes">
+                <rect class="c-gallery-section__box c-gallery-section__box-0" width="40" height="40" rx="6" x="20" y="10" />
+                <rect class="c-gallery-section__box c-gallery-section__box-1" width="40" height="40" rx="6" x="70" y="10" />
+                <rect class="c-gallery-section__box c-gallery-section__box-2" width="40" height="40" rx="6" x="120" y="10" />
+                <rect class="c-gallery-section__box c-gallery-section__box-3" width="40" height="40" rx="6" x="170" y="10" />
+                <rect class="c-gallery-section__lock-box" width="40" height="40" rx="6" x="70" y="10" />
+            </g>
+            
+            <g class="c-gallery-section__hit-areas" fill="rgba(0,0,0,0)">
+                <rect class="c-gallery-section__prev" width="40" height="40" x="20" y="10" />
+                <rect class="c-gallery-section__next" width="40" height="40" x="120" y="10" />
+            </g>
+            
+            <text class="c-gallery-section__counter" x="90" y="37" font-size="23" text-anchor="middle">1</text>
+        </svg>
+    </div>
+    
+    <div class="c-gallery-section__thumbnails">
+        {% for image in localData.images %}
+        <div class="c-gallery-section__thumbnail-wrapper" data-index="{{ loop.index0 }}">
+            <img class="c-gallery-section__thumbnail" src="{{ image.image }}" alt="{{ image.title }}">
+            <div class="c-gallery-section__thumbnail-overlay"></div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    {# Vertical slider variant (1) #}
+    <div class="c-gallery-section__wrapper">
+        <div id="masterWrap">
+            <div id="panelWrap">
+                {% for image in localData.images %}
+                <section class="gallery-slide">
+                    <img src="{{ image.image }}" alt="{{ image.title }}">
+                </section>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="dots"></div>
+        
+        <svg id="gallery-downArrow" class="gallery-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <g stroke="white" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none">
+                <circle r="46" cx="50" cy="50" />
+                <polyline points="25 40, 50 70, 75 40"></polyline>
+            </g>
+        </svg>
+        <svg id="gallery-upArrow" class="gallery-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <g stroke="white" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" fill="none">
+                <circle r="46" cx="50" cy="50" />
+                <polyline points="25 60, 50 30, 75 60"></polyline>
+            </g>
+        </svg>
+    </div>
+    
+    <div class="c-gallery-section__thumbnails">
+        {% for image in localData.images %}
+        <div class="c-gallery-section__thumbnail-wrapper" data-index="{{ loop.index0 }}">
+            <img class="c-gallery-section__thumbnail" src="{{ image.image }}" alt="{{ image.title }}">
+            <div class="c-gallery-section__thumbnail-overlay"></div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</section>
+{% endmacro %}
+

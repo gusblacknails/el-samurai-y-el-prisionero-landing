@@ -1,0 +1,188 @@
+//
+// Config Settings
+//
+// Sizing based in REM values, which is 16px.
+// ================================================================================
+
+
+
+
+
+// Breakpoints & Grid
+// ========================================
+
+$col-total: 12;
+$col-padding: 32px;
+
+// by Tailwind at Jan'21
+$breakpoints: (
+  'xs'   :  '0',
+  'sm'   :  '640px',
+  'md'   :  '768px',
+  'lg'   :  '1024px',
+  'xl'   :  '1280px',
+  'xxl'  :  '1536px'
+);
+
+$containerWidths: (
+  'xs'   :  100%,
+  'sm'   :  100%,
+  'md'   :  90%,
+  'lg'   :  88%,
+  'xl'   :  86%,
+  'xxl'  :  84%
+);
+
+
+
+
+
+// Depth
+// ========================================
+
+:root {
+  --zindex-under:        -1;
+  --zindex-above:         1;
+  // --zindex-links:     90;
+  --zindex-modalBg:      90;
+  --zindex-menu:        100;
+  --zindex-menuToggle:  110;
+  --zindex-aboveMenu:   120;
+}
+
+
+
+
+
+// Colors
+//
+// Scheme colors are passed in the head of the HTML document
+// and all variables are created using mixings (/styles/mixins/colors)
+// They are:
+// --color-primary: RR, GG, BB;
+// --color-secondary: RR, GG, BB;
+// --color-accent: RR, GG, BB;
+// ========================================
+
+:root {
+  --color-white:        249, 249, 249;
+  --color-black:        39, 39, 39;
+}
+
+
+
+
+
+// Font Sizes
+// ========================================
+
+:root {
+  --fontSize-12:  12px;
+  --fontSize-14:  14px;
+  --fontSize-16:  16px;
+  --fontSize-18:  18px;
+  --fontSize-20:  20px;
+  --fontSize-24:  24px;
+  --fontSize-32:  32px;
+  --fontSize-40:  40px;
+  // --fontSize-48:  48px;
+  // --fontSize-56:  56px;
+  // --fontSize-64:  64px;
+  // --fontSize-80:  80px;
+  // --fontSize-96:  96px;
+}
+
+
+
+
+
+// Line Heigts
+// ========================================
+
+:root {
+  --lineHeight-100:   1;
+  --lineHeight-120:   1.2;
+  --lineHeight-140:   1.4;
+  --lineHeight-160:   1.6;
+}
+
+
+
+
+
+// Spacing
+// ========================================
+
+:root {
+  --space-1:       1px;
+  --space-2:       2px;
+  --space-4:       4px;
+  --space-6:       6px;
+  --space-8:       8px;
+  --space-10:     10px;
+  --space-12:     12px;
+  --space-16:     16px;
+  --space-20:     20px;
+  --space-24:     24px;
+  --space-32:     32px;
+  --space-40:     40px;
+  --space-48:     48px;
+  --space-56:     56px;
+  --space-64:     64px;
+  --space-72:     72px;
+  --space-80:     80px;
+  --space-96:     96px;
+  --space-120:   120px;
+  --space-240:   240px;
+  --space-320:   320px;
+  --space-400:   400px;
+}
+
+
+
+
+
+// Border Radius
+// ========================================
+
+:root {
+  --borderRadius-2:   2px;
+  // --borderRadius-4:   4px;
+  --borderRadius-max: 50%;
+}
+
+
+
+
+
+// Transition Durations & Easing
+// ========================================
+
+:root {
+  --duration-200:   0.2s;
+  --duration-400:   0.4s;
+  
+  // Modern easing functions
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  // Transition shortcuts
+  --transition-fast: 150ms var(--ease-smooth);
+  --transition-base: 300ms var(--ease-smooth);
+  --transition-slow: 500ms var(--ease-out-expo);
+  
+  // Modern shadows
+  --shadow-sm: 0 2px 4px rgba(23, 97, 127, 0.1);
+  --shadow-md: 0 4px 12px rgba(23, 97, 127, 0.15);
+  --shadow-lg: 0 8px 24px rgba(23, 97, 127, 0.2);
+  --shadow-xl: 0 12px 32px rgba(23, 97, 127, 0.25);
+  
+  // Gradients
+  --gradient-primary: linear-gradient(135deg, #17617f 0%, #0d4a63 100%);
+  --gradient-accent: linear-gradient(135deg, #fbfaec 0%, #e8e6d0 100%);
+  --gradient-overlay: linear-gradient(180deg, rgba(23, 97, 127, 0.8) 0%, rgba(23, 97, 127, 0.4) 50%, transparent 100%);
+}
+
+
+ 

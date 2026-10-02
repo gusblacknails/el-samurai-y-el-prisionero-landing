@@ -1,0 +1,24 @@
+//
+// Section Margins
+// ================================================================================
+
+
+@mixin section-margins() {
+  margin: var(--space-40) 0;
+  padding: var(--space-32) 0;
+
+  @include breakpoint(md) {
+    margin: var(--space-48) 0;
+    padding: var(--space-40) 0;
+  }
+
+  @include breakpoint(lg) {
+    margin: var(--space-56) auto;
+    padding: var(--space-40) 0;
+  }
+
+  @include breakpoint(xxl) {
+    // margin: var(--space-72) auto;
+    padding: var(--space-48) 0;
+  }
+}

@@ -1,0 +1,149 @@
+{#
+    Component Footer
+    ========================================
+
+    "footer": {
+        "logoMovie": "assets/images/logo-sick-of-myself-footer.png",
+        "copyright": {
+            "company": "ADSO Films",
+            "logo": "assets/images/logo-adso-footer.png",
+            "link": "https://adso.tv/",
+            "texts": [
+                "Copyright ADSO Films",
+                "Todos los derechos reservados"
+            ]
+        },
+        "legalLinks": [ (optional)
+            {
+                "text": "Política de Cookies",
+                "URL": "..."
+            },
+            {
+                "text": "Protección de Datos",
+                "URL": "..."
+            }
+        ]
+    }
+#}
+
+{% macro component(localData, siteData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-footer--" + variant %}
+<footer class="c-footer {{ variantClass }}" data-gsap-variant="{{ variant }}">
+
+    <div class="u-container u-container--align-stretch">
+
+        <div class="u-col u-col-12 u-md-col-4 u-lg-col-4">
+            <div class="c-footer__section c-footer__movie-logo">
+                <img src=" {{ localData.logoMovie }}" alt="{{ siteData.movieName }}" class="c-footer__movie-logo-img"/>
+            </div>
+        </div>
+
+        <div class="u-col u-col-12 u-md-col-4 u-lg-col-5">
+            <div class="c-footer__section c-footer__copyright">
+
+                <a href="{{ localData.copyright.link }}" target="_blank" class="c-footer__copyright-logo">
+                    <img src=" {{ localData.copyright.logo }}" alt="{{ localData.copyright.company }}"/>
+                </a>
+
+                <ul>
+                    {% for text in localData.copyright.texts %}
+                    <li>
+                        <span class="c-footer__copyright-texts">{{ text }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+        
+
+        <div class="u-col u-col-12 u-md-col-4 u-lg-col-3">
+            <div class="c-footer__section c-footer__legal-links">
+                <ul>
+                    {% for link in localData.legalLinks %}
+                    <li>
+                        <a href="{{ link.URL }}" target="_blank">{{ link.text }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <section class="c-share" id="{{ localData.data.id }}" {% if localData.data.background %}style="background-image: url('{{ localData.data.background }}');"{% endif %} data-reveal>
+
+        <div class="u-container u-container--center">
+    
+            {% if localData.data.title %}
+            <div class="u-col u-col-px u-col-12">
+                <h2 class="c-share__title">{{ localData.data.title }}</h2>
+            </div>
+            {% endif %}
+    
+            <div class="u-col u-col-px u-col-12">
+                <ul class="c-share__icons-list">
+    
+                    {# Twitter #}
+                    {% if localData.data.twitter %}
+                    <li class="c-share__icon">
+                        <a href="{{ localData.data.twitter }}" target="_blank" class="c-share__anchor" title="Comparte en Twitter">
+                            {% include 'components/svg/x.svg' %}
+                        </a>
+                    </li>
+                    {% endif %}
+                    
+    
+                    {# Facebook #}
+                    {% if localData.data.facebook %}
+                    <li class="c-share__icon">
+                        <a href="{{ localData.data.facebook }}" target="_blank" class="c-share__anchor" title="Comparte en Facebook">
+                            {% include 'components/svg/facebook.svg' %}
+                        </a>
+                    </li>
+                    {% endif %}
+    
+                    {# Instagram #}
+                    {% if localData.data.instagram %}
+                    <li class="c-share__icon">
+                        <a href="{{ localData.data.instagram }}" target="_blank" class="c-share__anchor" title="Comparte en Instagram">
+                            {% include 'components/svg/instagram.svg' %}
+                        </a>
+                    </li>
+                    {% endif %}
+                        
+                    {# Youtube #}
+                    {% if localData.data.youtube %}
+                    <li class="c-share__icon">
+                        <a href="{{ localData.data.youtube }}" target="_blank" class="c-share__anchor" title="Comparte en YouTube">
+                            {% include 'components/svg/youtube.svg' %}
+                        </a>
+                    </li>
+                    {% endif %}
+                    
+                    {# Mail #}
+                    {% if localData.data.email %}
+                    <li class="c-share__icon">
+                        <a href="mailto:{{ localData.data.email }}" class="c-share__anchor" title="Comparte por Correo">
+                            {% include 'components/svg/mail.svg' %}
+                        </a>
+                    </li>
+                    {% endif %}
+    
+                </ul>
+            </div>
+    
+            <div class="u-col u-col-px u-col-12">
+                <p class="c-share__developer">
+                    {% if siteData.movieName == "El camí de la sal" %}
+                    Desenvolupat per <a href="https://bekamedia.es" target="_blank" class="c-share__developer-link">Beka Media</a>
+                    {% else %}
+                    Desarrollado por <a href="https://bekamedia.es" target="_blank" class="c-share__developer-link">Beka Media</a>
+                    {% endif %}
+                </p>
+            </div>
+    
+    
+        </div>
+    
+    </section>
+</footer>
+{% endmacro %}

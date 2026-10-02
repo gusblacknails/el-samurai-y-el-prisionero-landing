@@ -1,0 +1,68 @@
+{#
+    Component Logos + Share (unificado)
+    "Distribuido por" + "Comparte" en un solo bloque
+#}
+
+{% macro component(localData, siteData, variant) %}
+{% set linkTwitter = ["https://twitter.com/intent/tweet?url=", siteData.url, "&text=", siteData.movieName] | join %}
+{% set linkFacebook = ["https://www.facebook.com/sharer/sharer.php?u=", siteData.url] | join %}
+{% set linkLinkedin = ["https://www.linkedin.com/shareArticle?mini=true&url=", siteData.url] | join %}
+{% set linkMail = ["mailto:?&subject=Mira ", siteData.movieName, "&body=", siteData.url] | join %}
+
+<section class="c-logos-and-share" id="{{ localData.id }}" data-gsap-variant="{{ variant | default('default') }}">
+
+    <div class="c-logos-and-share__inner">
+
+        {% if localData.logos and localData.logos.title %}
+        <div class="c-logos-and-share__block c-logos-and-share__logos">
+            <h2 class="c-logos-and-share__title">{{ localData.logos.title }}</h2>
+            <ul class="c-logos-and-share__logos-list">
+                {% for logo in localData.logos.logos %}
+                <li class="c-logos-and-share__logo-item">
+                    {% if logo.URL %}
+                    <a href="{{ logo.URL }}" target="_blank" class="c-logos-and-share__img-container" rel="noopener">
+                        <img src="{{ logo.image }}" alt="{{ logo.title }}" />
+                    </a>
+                    {% else %}
+                    <div class="c-logos-and-share__img-container">
+                        <img src="{{ logo.image }}" alt="{{ logo.title }}" />
+                    </div>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        {% if localData.shareTitle %}
+        <div class="c-logos-and-share__block c-logos-and-share__share">
+            <h2 class="c-logos-and-share__title">{{ localData.shareTitle }}</h2>
+            <ul class="c-logos-and-share__icons-list">
+                <li class="c-logos-and-share__icon">
+                    <a href="{{ linkTwitter }}" target="_blank" class="c-logos-and-share__anchor" title="Comparte en Twitter" rel="noopener">
+                        {% include 'components/svg/twitter.svg' %}
+                    </a>
+                </li>
+                <li class="c-logos-and-share__icon">
+                    <a href="{{ linkFacebook }}" target="_blank" class="c-logos-and-share__anchor" title="Comparte en Facebook" rel="noopener">
+                        {% include 'components/svg/facebook.svg' %}
+                    </a>
+                </li>
+                <li class="c-logos-and-share__icon">
+                    <a href="{{ linkLinkedin }}" target="_blank" class="c-logos-and-share__anchor" title="Comparte en LinkedIn" rel="noopener">
+                        {% include 'components/svg/linkedin.svg' %}
+                    </a>
+                </li>
+                <li class="c-logos-and-share__icon">
+                    <a href="{{ linkMail }}" target="_blank" class="c-logos-and-share__anchor" title="Comparte por correo" rel="noopener">
+                        {% include 'components/svg/mail.svg' %}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
+
+    </div>
+
+</section>
+{% endmacro %}

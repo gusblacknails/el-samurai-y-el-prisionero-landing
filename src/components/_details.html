@@ -1,0 +1,59 @@
+{#
+    Component Details
+    ========================================
+
+    "sections": [
+        {
+            "type": "details",
+            "data": {
+                "id": "movie-details", (optional)
+                "poster": "assets/images/sick-of-myself-poster--1200x1714.jpg",
+                "specs": [
+                    {
+                        "label": "Título Original",
+                        "value": "Syk Pike"
+                    },
+                    {
+                        "label": "Director Y Guionista",
+                        "value": "Kristoffer Borgli"
+                    },
+                    {
+                        "label": "Productores",
+                        "value": "Andrea Berentsen Ottmar, Dyveke Bjørkly Graver"
+                    },
+                    ...
+                ]
+            }
+        },
+    ]
+#}
+
+{% macro component(localData, siteData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-details--" + variant %}
+<section class="c-details {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+    <div id="details" class="u-container">
+
+        <div class="u-col u-col-px u-col-12 u-md-col-4 u-xl-offset-1">
+            <img class="c-details__poster"
+                src=" {{ localData.poster }}"
+                alt="{{ siteData.movieName }}">
+        </div>
+
+        <div class="u-col u-col-px u-col-12 u-md-offset-1 u-md-col-7 u-xl-col-6">
+            <div class="c-details__specs" data-equalize>
+
+                {% for item in localData.specs %}
+                    <div class="c-details__specs-item{% if item.label == 'Reparto' or item.label == 'Repartiment' %} c-details__specs-item--reparto{% endif %}">
+                        <h3 class="c-details__label">{{ item.label }}</h3>
+                        <h3 class="c-details__value">{{ item.value }}</h3>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- Details layout functionality loaded via scripts.js -->
+
+
+{% endmacro %}

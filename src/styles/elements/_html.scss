@@ -1,0 +1,38 @@
+//
+// HTML
+// ================================================================================
+
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  
+  // Add scroll padding to account for fixed navbar (64px mobile, 56px desktop)
+  scroll-padding-top: var(--space-64);
+  
+  @include breakpoint(lg) {
+    scroll-snap-type: y proximity;
+    scroll-padding-top: var(--space-56);
+  }
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg-primary);
+}
+
+section {
+  @include breakpoint(lg) {
+    scroll-snap-align: start;
+  }
+  
+  // Additional scroll margin for sections with IDs (anchors)
+  &[id] {
+    scroll-margin-top: var(--space-64);
+
+    @include breakpoint(lg) {
+      scroll-margin-top: var(--space-56);
+    }
+  }
+}

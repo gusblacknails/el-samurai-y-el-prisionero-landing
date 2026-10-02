@@ -1,0 +1,42 @@
+//
+// Comptwonts / Text and Image Two
+// ==========================================================================
+
+
+.c-text-and-image-two {
+  @include section-margins;
+}
+
+
+.c-text-and-image-two__image {
+  margin-bottom: var(--space-32);
+}
+
+
+.c-text-and-image-two__title-wrapper {
+  @include breakpoint(md) {
+    transform: translateY(var(--space-120));
+  }
+}
+
+
+.c-text-and-image-two__subtitle {
+  margin-bottom: var(--space-6);
+  @include typo-legend;
+  color: var(--color-base);
+}
+
+
+.c-text-and-image-two__title {
+  margin-bottom: var(--space-24);
+
+  font-family: var(--font-display);
+  font-size: var(--fontSize-40);
+  color: var(--color-accent);
+  line-height: var(--lineHeight-120);
+}
+
+
+.c-text-and-image-two__text {
+  line-height: 1.6;
+}

@@ -1,0 +1,41 @@
+{#
+    Component Text Centered
+    ========================================
+
+    "sections": {
+        {
+            "type": "textCentered",
+            "data": {
+                "id": "intro", (optional)
+                "title": "Sinposis", (optional)
+                "text": "Signe y Thomas..."
+            }
+        },
+    }
+#}
+
+{% macro component(localData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-intro--" + variant %}
+<section class="c-intro {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+
+    {% if localData.title %}
+    <div class="u-container">
+        <div class="u-col u-col-px u-col-12">
+            <h2 class="c-intro__title">
+                {{ localData.title }}
+            </h2>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="u-container u-container--center">
+        <div class="u-col u-col u-col-px u-col-12 u-md-col-10">
+            <div class="c-intro__text-wrapper">
+                <div class="c-intro__text">
+                    {{ localData.text }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endmacro %}

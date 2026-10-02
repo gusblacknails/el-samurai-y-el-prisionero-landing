@@ -1,0 +1,57 @@
+{#
+    Component Video
+    ========================================
+
+    "sections": {
+        {
+            "type": "video",
+            "data": {
+                "id": "video", (optional)
+                "title": "Trailer",
+                "youtubeId": "1PCkTL0q1lA" (ID del video de YouTube)
+                "iframe": "<iframe ...></iframe>" (opcional, si se proporciona se usa en lugar de youtubeId)
+            }
+        },
+    }
+#}
+
+{% macro component(localData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-video--" + variant %}
+<section class="c-video {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+    
+    <div class="u-container u-container--center">
+        <h2 class="c-intro__title" id="trailerTitle">
+            {{ localData.title | safe }}
+        </h2>
+        <div class="u-col u-col u-col-px u-col-12">
+            <div class="c-video__video" data-youtube-id="{{ localData.youtubeId if localData.youtubeId else '' }}">
+                {% if localData.poster %}
+                <img src="{{ localData.poster }}" alt="Poster del trailer" class="c-video__poster">
+                {% endif %}
+                {% if localData.iframe %}
+                    {{ localData.iframe | safe }}
+                {% elif localData.youtubeId %}
+                    <button class="c-video__play-button" aria-label="Reproducir video">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="40" fill="var(--color-accent)"/>
+                            <path d="M32 24L32 56L56 40L32 24Z" fill="var(--color-base)"/>
+                        </svg>
+                    </button>
+                    <iframe 
+                        id="youtube-iframe-{{ localData.id }}"
+                        width="560" 
+                        height="315" 
+                        src="https://www.youtube.com/embed/{{ localData.youtubeId }}?enablejsapi=1&autoplay=0&controls=1&modestbranding=1&rel=0&showinfo=0" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen
+                        style="border: none; position: absolute; top: 0; height: 100%; width: 100%; opacity: 0; visibility: hidden;">
+                    </iframe>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endmacro %}

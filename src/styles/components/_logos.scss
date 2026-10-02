@@ -1,0 +1,40 @@
+//
+// Components / Logos
+// ==========================================================================
+
+
+.c-logos {
+  padding: var(--space-40) 0;
+
+  background-color: var(--color-bg-primary);
+  border-top: 1px solid rgba(var(--color-black), 0.2);
+  border-bottom: 1px solid rgba(var(--color-black), 0.2);
+}
+
+
+.c-logos__title {
+  margin-bottom: var(--space-40);
+  padding: 0 var(--space-16);
+
+  font-family: var(--font-display);
+  color: var(--color-accent);
+  text-align: center;
+}
+
+
+a.c-logos__img-container:link,
+a.c-logos__img-container:visited {
+  transition: opacity 0.2s ease-out;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+#logosDistribution img{
+  // transform: scale(2);
+}
+@media(min-width: 768px){
+  #logosDistribution img{
+    transform: scale(1) !important;
+  }
+}

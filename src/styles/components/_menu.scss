@@ -1,0 +1,416 @@
+//
+// Components / Menu
+// ========================================
+
+
+.c-menu {
+  height: var(--space-64);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  
+  background-color: var(--color-bg-primary);
+  background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+  background-repeat: repeat;
+  transition: all var(--transition-base);
+
+  @include breakpoint(lg) {
+    z-index: var(--zindex-menu);
+    height: var(--space-56);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    opacity: 1;
+
+    // Page at top - botones centrados en desktop
+    .--page-at-top & {
+      opacity: 1;
+      justify-content: center;
+    }
+  }
+}
+
+
+.c-menu__wrapper {
+  padding: var(--space-8) var(--space-16);
+  height: 100%;
+
+  background-color: transparent;
+
+  @include breakpoint(lg) {
+    background-color: unset;
+    position: relative;
+    left: unset;
+    z-index: 1;
+    pointer-events: auto;
+    padding: var(--space-8) var(--space-24);
+    
+  }
+}
+
+
+.c-menu__logo {
+  height: 150%;
+  max-width: 75%;
+
+  display: flex;
+  align-items: center;
+
+
+
+  img {
+    height: 130%;
+    width: 100%;
+    object-fit: contain;
+    object-position: center left;
+    margin-bottom: 22px;
+
+  }
+
+  @include breakpoint(md) {
+    max-width: 50%;
+  }
+
+  @include breakpoint(lg) {
+    height: auto;
+    max-width: unset;
+    position: relative;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-bottom: 0;
+      height: auto;
+      display: block;
+      width: auto;
+  
+      max-height: var(--space-56);
+      object-fit: contain;
+      object-position: center left;
+      max-width: 97px;
+      position: relative;
+      bottom: 4px;
+    }
+
+    // Logo catalán más pequeño (el acento desborda si usa el mismo tamaño que cast)
+    img[src*="navbar_cat"] {
+      max-width: 68px;
+      max-height: 48px;
+    }
+
+    // Page at top - ocultar logo cuando está arriba
+    .--page-at-top & {
+      opacity: 0;
+    }
+  }
+}
+
+
+
+
+// Toggle button
+// ========================================
+
+.c-menu__toggle {
+  all: unset;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: fixed;
+  z-index: 1100 !important;
+  top: calc(var(--space-64) / 2);
+  right: var(--space-12);
+  width: var(--space-40);
+  height: var(--space-40);
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  cursor: pointer;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden; // Will be made visible by GSAP on load
+  @include breakpoint(lg) {
+    display: none;
+  }
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+}
+
+.c-menu__toggle-inner {
+  height: 60%;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  align-items: center;
+  justify-items: center;
+  
+  > * {
+    grid-area: 1 / 1 / 2 / 2;
+    display: block;
+    width: 100%;
+  }
+}
+
+.c-menu__toggle-anim {
+  height: 3px;
+  width: 60%;
+  margin: 0 auto;
+  background-color: rgba(var(--color-white), 1);
+  border-radius: 2px;
+}
+
+.c-menu__toggle-text {
+  color: rgba(var(--color-white), 1);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: lowercase;
+  text-indent: -9999px; // Hidden by default, can be made visible with .better class
+  height: auto;
+}
+
+
+
+
+
+// Menu
+// ========================================
+
+
+.c-menu__nav {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: var(--zindex-menu);
+  top: 0;
+  right: -100vw;
+  bottom: 0;
+
+  padding: var(--space-12) var(--space-16) var(--space-40) var(--space-16);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-color: var(--color-bg-primary);
+  background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+  background-repeat: repeat;
+  box-shadow: 0px 0px 8px rgba( var(--color-black), 0);
+  // Transition handled by GSAP, but keep for fallback
+  transition: right 0.5s ease-in-out;
+
+  &.--is-active {
+    right: 0 !important;
+    z-index: 1001 !important;
+    box-shadow: 0px 0px 8px rgba( var(--color-black), 0.25);
+
+    @include breakpoint(lg) {
+      right: auto !important;
+      box-shadow: none;
+    }
+  }
+  
+  // Ensure links are visible when menu is active
+  &.--is-active .c-menu__anchor {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  &.--is-active .c-menu__mobile-logo {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+
+  @include breakpoint(sm) {
+    width: var(--space-320);
+    right: calc(-1 * var(--space-320));
+    
+    &.--is-active {
+      right: 0 !important;
+    }
+  }
+
+
+  @include breakpoint(lg) {
+    position: relative;
+    height: 100%;
+    width: auto;
+    top: unset;
+    right: 67px;
+    bottom: unset;
+
+    display: flex;
+    align-items: center;
+    padding: 0 var(--space-24);
+
+    background-color: transparent;
+  }
+}
+
+
+.c-menu__mobile-logo {
+  height: var(--space-64);
+  max-width: 75%;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(-20px);
+  z-index: 10;
+
+  img {
+    height: 100%;
+    max-height: var(--space-64);
+    width: 100%;
+    object-fit: contain;
+    object-position: center left;
+  }
+
+  // Logo catalán más pequeño en móvil también
+  img[src*="navbar_cat"] {
+    max-width: 58%;
+    max-height: 52px;
+  }
+
+  @include breakpoint(lg) {
+    display: none;
+  }
+}
+
+
+.c-menu__links-list {
+
+  @include breakpoint(lg) {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-16);
+    
+    // Cuando está en la parte superior, mantener el gap original
+    .--page-at-top & {
+      gap: var(--space-24);
+    }
+  }
+
+  @include breakpoint(xl) {
+    gap: var(--space-20);
+    
+    .--page-at-top & {
+      gap: var(--space-32);
+    }
+  }
+}
+
+
+.c-menu__anchor {
+  display: inline-block;
+  margin: var(--space-8) 0;
+  padding: var(--space-4) var(--space-16) var(--space-4) 0;
+  position: relative;
+  z-index: 10;
+
+  font-family: var(--font-display);
+  font-size: var(--fontSize-18);
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  color: white;
+  text-decoration: none;
+
+  // En desktop: ocultos hasta que cargue el logo del hero (body.hero-logo-not-loaded), luego visibles
+  @include breakpoint(lg) {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    body.hero-logo-not-loaded & {
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+  }
+
+  // Estado inicial para animación solo en móvil
+  @media (max-width: 1023px) {
+    opacity: 0;
+    transform: translateX(30px);
+    visibility: hidden;
+  }
+
+  transition: all var(--transition-base);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-accent);
+    transition: width var(--transition-base);
+  }
+
+  &:hover {
+    color: var(--color-accent);
+    transform: translateY(-2px);
+
+    &::after {
+      width: calc(100% - var(--space-16));
+    }
+
+    @include breakpoint(lg) {
+      // Cuando se hace scroll, hover con color accent
+      color: var(--color-accent);
+      
+      // Page at top - hover también blanco
+      .--page-at-top & {
+        color: white;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  @include breakpoint(lg) {
+    margin: 0;
+    padding: 0 var(--space-16) 0 0;
+    font-family: var(--font-base);
+    font-size: var(--fontSize-16);
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+
+    &::after {
+      // bottom: -4px;
+      left: 0;
+    }
+
+    &:hover::after {
+      width: calc(100% - var(--space-16));
+    }
+
+    // Page at top - texto blanco también cuando está arriba
+    .--page-at-top & {
+      color: white;
+    }
+  }
+}

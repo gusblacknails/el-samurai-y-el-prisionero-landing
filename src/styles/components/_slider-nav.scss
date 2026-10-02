@@ -1,0 +1,129 @@
+//
+// Components / Slider Navigation
+// ==========================================================================
+
+
+.c-slider-nav {
+  display: flex;
+  justify-content: center;
+
+  // Safari
+  // gap: var(--space-16);
+}
+
+
+.c-slider-nav__arrow {
+  all: unset;
+  
+  height: var(--space-40);
+  width: var(--space-40);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  background-color: transparent;
+
+  transition: all 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  
+  overflow: hidden;
+
+  // Safari
+  margin: 0 var(--space-8);
+
+  &:not(.swiper-button-disabled) {
+    cursor: pointer;
+    
+    &:hover {
+      box-shadow: 0 4px 12px rgba(var(--color-black), 0.2);
+    }
+    
+    &:active {
+      animation: buttonClick 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    }
+  }
+  
+  @keyframes buttonClick {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  &.swiper-button-disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+  
+  &:focus-visible {
+    outline: 3px solid rgba(var(--color-white), 0.5);
+    outline-offset: 2px;
+  }
+}
+
+.c-slider-nav__arrow-inner {
+  height: 60%;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.c-slider-nav__arrow-chevron {
+  width: 10px;
+  height: 10px;
+  position: relative;
+  display: block;
+  
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 2.5px;
+    height: 8px;
+    background-color: rgba(var(--color-black), 1);
+    border-radius: 1px;
+  }
+}
+
+// Prev button - chevron pointing left (<)
+.c-slider-nav--prev .c-slider-nav__arrow-chevron {
+  &::before {
+    top: 50%;
+    left: 2px;
+    transform: translateY(-50%) rotate(-45deg);
+    transform-origin: center right;
+  }
+  
+  &::after {
+    bottom: 50%;
+    left: 2px;
+    transform: translateY(50%) rotate(45deg);
+    transform-origin: center right;
+  }
+}
+
+// Next button - chevron pointing right (>)
+.c-slider-nav--next .c-slider-nav__arrow-chevron {
+  &::before {
+    top: 50%;
+    right: 2px;
+    transform: translateY(-50%) rotate(45deg);
+    transform-origin: center left;
+  }
+  
+  &::after {
+    bottom: 50%;
+    right: 2px;
+    transform: translateY(50%) rotate(-45deg);
+    transform-origin: center left;
+  }
+}

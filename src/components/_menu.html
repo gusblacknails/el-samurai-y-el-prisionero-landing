@@ -1,0 +1,70 @@
+{#
+    Component Menu
+    ========================================
+
+    "menu": {
+        "logo": "assets/images/sick-of-myself-logo-menu.png",
+        "links": [
+            {
+                "text": "Inicio",
+                "url": "#hero"
+            },
+            {
+                "text": "Área de Prensa",
+                "url": "https://drive.google.com/drive/folders/1kkTFc3f--I3ikM2ZFFQPA-6pUlZOMR7j",
+                "target": "_blank"
+            }
+            ...
+        ]
+    },
+#}
+
+{% macro component(localData, siteData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-menu--" + variant %}
+<header class="c-menu {{ variantClass }}" data-gsap-variant="{{ variant }}">
+
+    <div class="c-menu__wrapper">
+
+        <a href="#top" class="c-menu__logo">
+            <img src=" {{ localData.logo }}" alt="{{ siteData.movieName }}" class="c-footer__movie-logo-img"/>
+        </a>
+
+        <button class="c-menu__toggle" aria-controls="menu-principal" aria-label="Show or Hide menu">
+            <span class="c-menu__toggle-inner">
+                <span class="c-menu__toggle-anim c-menu__toggle-anim--top"></span>
+                <span class="c-menu__toggle-anim c-menu__toggle-anim--middle"></span>
+                <span class="c-menu__toggle-anim c-menu__toggle-anim--bottom"></span>
+                <span class="c-menu__toggle-text">Menu</span>
+            </span>
+        </button>
+
+    </div>
+
+    <nav id="main-menu" class="c-menu__nav">
+
+        <div class="c-menu__mobile-logo">
+            <img src=" {{ localData.logo }}" alt="{{ siteData.movieName }}" class="c-footer__movie-logo-img"/>
+        </div>
+
+        <ul class="c-menu__links-list">
+            {% for link in localData.links %}
+            <li class="c-menu__list-item">
+                <a class="c-menu__anchor"
+
+                    href="{{ link.url }}"
+
+                    {% if link.target %}
+                    target="{{ link.target }}"
+                    {% endif %}
+                >
+                    {{ link.text }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </nav>
+
+</header>
+
+<div class="c-modal-bg"></div>
+{% endmacro %}

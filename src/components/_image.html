@@ -1,0 +1,26 @@
+{#
+    Component Image
+    ========================================
+
+    "sections": {
+        {
+            "type": "image",
+            "data": {
+                "id": "image-end", (optional)
+                "title": "Sick of Myself actress playing with a medical pill",
+                "mobile": "assets/images/image-end--mobile.webp",
+                "desktop": "assets/images/image-end--desktop.webp"
+            }
+        }
+    }
+#}
+
+{% macro component(localData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-image--" + variant %}
+<aside class="c-image {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+    <picture>
+        <source media="(max-width: 639px)" srcset=" {{ localData.mobile }}" />
+        <source media="(min-width: 640px)" srcset=" {{ localData.desktop }}" />
+        <img src=" {{ localData.desktop }}" alt="{{ localData.title }}" />
+    </picture>
+</aside>
+{% endmacro %}

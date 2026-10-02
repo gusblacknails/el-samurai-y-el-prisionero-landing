@@ -1,0 +1,644 @@
+{% macro component(localData, siteData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-custom--" + variant %}
+
+{% if variant == 'titleGrid' %}
+<section class="c-custom {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+    <div class="c-vertical-pager">
+      <div class="c-vertical-pager__page c-vertical-pager__page--titlegrid">
+        <div class="c-title-grid">
+            <div class="c-title-grid__leftImage">
+                {% if localData.leftImage %}
+                <img src="{{ localData.leftImage }}" alt="{{ localData.leftImageAlt | default('') }}">
+                {% endif %}
+            </div>
+
+            <div class="c-title-grid__rightText">
+                {% if localData.rightTitle %}
+                    <h2 class="c-title-grid__heading">{{ localData.rightTitle }}</h2>
+                {% endif %}
+                {% if localData.rightText %}
+                    <div class="c-title-grid__body c-wysiwyg">{{ localData.rightText | safe }}</div>
+                {% endif %}
+            </div>
+
+            <div class="c-title-grid__leftText">
+                {% if localData.leftTitle %}
+                    <h2 class="c-title-grid__heading">{{ localData.leftTitle }}</h2>
+                {% endif %}
+                {% if localData.leftText %}
+                    <div class="c-title-grid__body c-wysiwyg">{{ localData.leftText | safe }}</div>
+                {% endif %}
+            </div>
+
+            <div class="c-title-grid__rightImage">
+                {% if localData.rightImage %}
+                <img src="{{ localData.rightImage }}" alt="{{ localData.rightImageAlt | default('') }}" loading="lazy">
+                {% endif %}
+            </div>
+        </div>
+      </div>
+
+      {% if localData.aboutFilm and (localData.aboutFilm.left or localData.aboutFilm.right) %}
+      <div class="c-vertical-pager__page c-vertical-pager__page--aboutfilm">
+        <div class="c-about-film">
+          {% if localData.aboutFilm.title %}
+            <h2 class="c-about-film__title">{{ localData.aboutFilm.title }}</h2>
+          {% endif %}
+          <div class="c-about-film__cols">
+            <div class="c-about-film__col c-wysiwyg">{{ localData.aboutFilm.left | safe }}</div>
+            <div class="c-about-film__col c-wysiwyg">{{ localData.aboutFilm.right | safe }}</div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+</section>
+
+<style>
+  /* Offset solo para este bloque (evita que lo tape el navbar) */
+  #sobre.c-custom--titleGrid{
+    padding-top: var(--space-64);
+    box-sizing: border-box;
+  }
+  @media (min-width: 1024px){
+    #sobre.c-custom--titleGrid{
+      padding-top: var(--space-56);
+    }
+  }
+
+  /* Pager vertical (2 "páginas" dentro de la misma pantalla horizontal) */
+  #sobre.c-custom--titleGrid .c-vertical-pager__page{
+    min-height: calc(100vh - var(--space-56));
+    display: flex;
+    align-items: center;
+  }
+  #sobre.c-custom--titleGrid .c-vertical-pager__page--titlegrid{
+    padding-bottom: var(--space-40);
+  }
+  #sobre.c-custom--titleGrid .c-vertical-pager__page--aboutfilm{
+    padding-top: var(--space-24);
+    padding-bottom: var(--space-56);
+  }
+
+  .c-title-grid{
+    width: min(1100px, 92vw);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 16px 0;
+  }
+  .c-title-grid img{
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius: 8px;
+  }
+  .c-title-grid__heading{
+    margin: 0 0 12px 0;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: clamp(1.25rem, 1.6vw + 0.8rem, 2rem);
+    color: var(--color-accent);
+  }
+  .c-title-grid__body{
+    font-family: var(--font-base);
+    color: var(--color-base);
+  }
+  .c-title-grid__body p{ margin-bottom: 14px; }
+  .c-title-grid__body p:last-child{ margin-bottom: 0; }
+
+  @media (min-width: 1024px){
+    .c-title-grid{
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "leftImage rightText"
+        "leftText rightImage";
+      align-items: start;
+      gap: 32px 48px;
+      padding: 32px 0;
+    }
+    .c-title-grid__leftImage{ grid-area: leftImage; }
+    .c-title-grid__rightText{ grid-area: rightText; }
+    .c-title-grid__leftText{ grid-area: leftText; }
+    .c-title-grid__rightImage{
+      grid-area: rightImage;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .c-title-grid__rightImage img{
+      width: 100%;
+      max-width: none;
+      height: auto;
+      margin-left: 0;
+    }
+  }
+
+  /* Sobre la película (maqueta tipo pressbook) */
+  .c-about-film{
+    width: min(1100px, 92vw);
+    margin: 0 auto;
+    color: var(--color-base);
+  }
+  .c-about-film__title{
+    margin: 0 0 44px 0;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: clamp(2rem, 2.8vw + 1rem, 3.2rem);
+    color: var(--color-accent);
+  }
+  .c-about-film__cols{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    font-family: var(--font-base);
+  }
+  .c-about-film__col{
+    font-size: clamp(1rem, 0.7vw + 0.85rem, 1.25rem);
+    line-height: 1.6;
+    max-width: 60ch;
+  }
+  @media (min-width: 1024px){
+    .c-about-film__cols{
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+  }
+</style>
+
+{% elif variant == 'castGrid' %}
+<section class="c-custom {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+  <div class="c-vertical-pager">
+    <div class="c-vertical-pager__page c-vertical-pager__page--cast">
+      <div class="c-cast-grid">
+        {% if localData.title %}
+          <h2 class="c-cast-grid__title">{{ localData.title }}</h2>
+        {% endif %}
+
+        <div class="c-cast-grid__items">
+          {% for item in localData.items %}
+            <article class="c-cast-grid__item">
+              <div class="c-cast-grid__avatar">
+                <img src="{{ item.image }}" alt="{{ item.name }}" loading="lazy">
+              </div>
+
+              <div class="c-cast-grid__content">
+                <h3 class="c-cast-grid__name">
+                  {{ item.name }}
+                  {% if item.role %}<span class="c-cast-grid__role">({{ item.role }})</span>{% endif %}
+                </h3>
+                <div class="c-cast-grid__bio c-wysiwyg">{{ item.bio | safe }}</div>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% if localData.director and (localData.director.text or localData.director.image) %}
+    <div class="c-vertical-pager__page c-vertical-pager__page--director">
+      <div class="c-director-page">
+        <div class="c-director-page__inner">
+          <div class="c-director-page__text">
+            {% if localData.director.title %}
+              <h2 class="c-director-page__title">{{ localData.director.title }}</h2>
+            {% endif %}
+            <div class="c-director-page__body c-wysiwyg">{{ localData.director.text | safe }}</div>
+          </div>
+          <div class="c-director-page__image">
+            {% if localData.director.image %}
+              <img src="{{ localData.director.image }}" alt="{{ localData.director.imageAlt | default('') }}" loading="lazy">
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  /* Offset + centrado visual (evita navbar) */
+  #reparto.c-custom--castGrid{
+    padding-top: var(--space-64);
+    box-sizing: border-box;
+  }
+  @media (min-width: 1024px){
+    #reparto.c-custom--castGrid{
+      padding-top: var(--space-56);
+    }
+  }
+
+  /* Pager vertical (reparto + directora) */
+  #reparto.c-custom--castGrid .c-vertical-pager__page{
+    min-height: calc(100vh - var(--space-56));
+    display: flex;
+    align-items: center;
+  }
+  #reparto.c-custom--castGrid .c-vertical-pager__page--cast{
+    padding-bottom: var(--space-40);
+  }
+  #reparto.c-custom--castGrid .c-vertical-pager__page--director{
+    padding-top: var(--space-24);
+    padding-bottom: var(--space-56);
+  }
+
+  .c-cast-grid{
+    width: min(1200px, 92vw);
+    margin: 0 auto;
+    padding: 24px 0;
+    text-align: center;
+    color: var(--color-base);
+  }
+
+  .c-cast-grid__title{
+    margin: 0 0 28px 0;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: clamp(1.6rem, 2vw + 1rem, 3rem);
+    color: var(--color-accent);
+  }
+
+  .c-cast-grid__items{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .c-cast-grid__item{
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 16px;
+  }
+
+  .c-cast-grid__avatar{
+    width: 190px;
+    height: 190px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.25);
+    background: rgba(255,255,255,0.08);
+  }
+
+  .c-cast-grid__avatar img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .c-cast-grid__name{
+    margin: 0 0 10px 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.1;
+    color: var(--color-base);
+  }
+
+  .c-cast-grid__role{
+    margin-left: 8px;
+    font-weight: 600;
+    opacity: 0.75;
+    font-size: 0.9em;
+  }
+
+  .c-cast-grid__bio{
+    font-family: var(--font-base);
+    font-size: 1rem;
+    line-height: 1.55;
+    max-width: 52ch;
+    margin: 0 auto;
+    opacity: 0.95;
+  }
+
+  @media (min-width: 1024px){
+    .c-cast-grid__items{
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 56px;
+      align-items: start;
+    }
+
+    .c-cast-grid__item{
+      grid-template-columns: 210px 1fr;
+      justify-items: start;
+      align-items: stretch;
+      text-align: left;
+      gap: 22px;
+    }
+    .c-cast-grid__avatar{
+      width: 210px;
+      height: auto;
+      min-height: 0;
+      align-self: stretch;
+      position: relative;
+      border-radius: 10px;
+    }
+    .c-cast-grid__avatar img{
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .c-cast-grid__bio{
+      max-width: 46ch;
+      margin: 0;
+    }
+  }
+
+  /* Sobre la directora (maqueta tipo pressbook) */
+  .c-director-page{
+    width: min(1200px, 92vw);
+    margin: 0 auto;
+    color: var(--color-base);
+  }
+  .c-director-page__inner{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  .c-director-page__title{
+    margin: 0 0 22px 0;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: clamp(1.7rem, 2.4vw + 0.9rem, 3.2rem);
+    color: var(--color-accent);
+    white-space: nowrap;
+  }
+  .c-director-page__body{
+    font-family: var(--font-base);
+    font-size: clamp(1rem, 0.7vw + 0.85rem, 1.2rem);
+    line-height: 1.65;
+    max-width: 72ch;
+  }
+  .c-director-page__image img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 22px 55px rgba(0,0,0,0.28);
+  }
+  @media (min-width: 1024px){
+    .c-director-page__inner{
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .c-director-page__image img{
+      border-radius: 12px;
+    }
+  }
+</style>
+
+{% elif variant == 'interview' %}
+<section class="c-custom {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+  <div class="c-interview-page">
+    {% if localData.title or localData.subtitle %}
+    <header class="c-interview-page__header">
+      {% if localData.title %}
+      <h2 class="c-interview-page__title">{{ localData.title }}</h2>
+      {% endif %}
+      {% if localData.subtitle %}
+      <p class="c-interview-page__subtitle">{{ localData.subtitle }}</p>
+      {% endif %}
+    </header>
+    {% endif %}
+    <div class="c-vertical-pager">
+      {% for page in localData.pages %}
+      <div class="c-vertical-pager__page c-vertical-pager__page--interview">
+        <div class="c-interview-page__body">
+          {% for item in page.items %}
+          <div class="c-interview-page__qa">
+            <h3 class="c-interview-page__question">{{ item.question }}</h3>
+            <div class="c-interview-page__answer c-wysiwyg"><p>{{ item.answer }}</p></div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  #entrevista.c-custom--interview{
+    padding-top: var(--space-64);
+    box-sizing: border-box;
+    background-color: var(--color-bg-primary);
+    min-height: 100vh;
+  }
+  @media (min-width: 1024px){
+    #entrevista.c-custom--interview{
+      padding-top: var(--space-56);
+    }
+  }
+  #entrevista.c-custom--interview .c-vertical-pager__page{
+    min-height: calc(100vh - var(--space-56));
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: var(--space-56);
+  }
+  .c-interview-page{
+    width: min(900px, 92vw);
+    margin: 0 auto;
+    color: var(--color-base);
+  }
+  .c-interview-page__header{
+    text-align: center;
+    margin-bottom: var(--space-24);
+  }
+  .c-interview-page__title{
+    margin: 0 0 8px 0;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: clamp(1.6rem, 2vw + 1rem, 2.6rem);
+    color: var(--color-accent);
+  }
+  .c-interview-page__subtitle{
+    margin: 0 0 28px 0;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    opacity: 0.85;
+  }
+  .c-interview-page__qa{
+    margin-bottom: 28px;
+    /* padding-bottom: 28px; */
+    /* border-bottom: 1px solid rgba(26, 26, 24, 0.12); */
+  }
+  .c-interview-page__qa:last-child{
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .c-interview-page__question{
+    margin: 0 0 12px 0;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    line-height: 1.35;
+  }
+  .c-interview-page__answer{
+    font-family: var(--font-base);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  .c-interview-page__answer p{ margin: 0; }
+</style>
+
+{% elif variant == 'press' %}
+<section class="c-custom {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+  <div class="c-press">
+    {% if localData.title %}
+      <h2 class="c-press__title">{{ localData.title }}</h2>
+    {% endif %}
+
+    {% if localData.text %}
+      <p class="c-press__text">{{ localData.text }}</p>
+    {% endif %}
+
+    {% if localData.linkURL %}
+      <a class="c-press__button" href="{{ localData.linkURL }}" target="_blank" rel="noopener noreferrer">
+        {{ localData.linkText | default('Descargar') }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  /* Prensa: misma jerarquía que premios */
+  .section-screen:has(#prensa) .section-screen__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    box-sizing: border-box;
+    padding-block: var(--space-56);
+  }
+
+  .section-screen:has(#prensa) .section-bg::after {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.62) 100%);
+    mix-blend-mode: normal;
+  }
+
+  .c-custom--press{
+    width: 100%;
+    max-width: min(820px, 92vw);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: var(--space-56) var(--space-24);
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .c-press{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-20);
+    align-items: center;
+  }
+
+  .c-press__title{
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 2.2vw + 0.9rem, 3rem);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .c-press__text{
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 0.85vw + 0.8rem, 1.45rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    color: #ffffff;
+    text-transform: none;
+  }
+
+  .c-press__button{
+    margin-top: var(--space-24);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.35rem;
+    border-radius: var(--space-4);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1rem, 0.85vw + 0.8rem, 1.2rem);
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    background: transparent;
+    border: 2px solid var(--color-accent);
+    text-decoration: none;
+    transition: transform var(--transition-base), background-color var(--transition-base), box-shadow var(--transition-base);
+    will-change: transform;
+  }
+  .c-press__button:hover{
+    color: #ffffff;
+    background-color: var(--color-accent);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: var(--shadow-lg);
+  }
+  .c-press__button:focus-visible{
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+</style>
+
+{% else %}
+<section class="container c-custom {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+    {% if localData.title %}
+        <h2 class="c-logos__title">{{ localData.title }}</h2>
+    {% endif %}
+
+    {% if localData.text %}
+        <p style="text-align:center">{{ localData.text }}</p>
+    {% endif %}
+
+    {% if localData.linkURL %}
+        <p style="text-align:center">
+            <a style="text-decoration: none; color: inherit;" href="{{ localData.linkURL }}" target="_blank">
+                <strong>{{ localData.linkText | default('Descargar') }}</strong>
+            </a>
+        </p>
+    {% endif %}
+</section>
+<style>
+    #fechas {
+        text-align: center;
+        margin-bottom: 1em;
+    }
+    .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+</style>
+{% endif %}
+
+{% endmacro %}

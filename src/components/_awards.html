@@ -1,0 +1,40 @@
+{#
+  Component Awards
+  ========================================
+
+  "sections": [
+    {
+      "type": "awards",
+      "variant": "list",
+      "data": {
+        "id": "premios",
+        "title": "Premios y festivales",
+        "items": [
+          { "text": "Festival de Venecia - Premio del Público (Venice Days)" }
+        ]
+      }
+    }
+  ]
+#}
+
+{% macro component(localData, variant) %} {% set variant = variant | default('list') %} {% set variantClass = "c-awards--" + variant %}
+<section class="c-awards {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+  {% if localData.title %}
+    <h2 class="c-awards__title">{{ localData.title }}</h2>
+  {% endif %}
+
+  {% if localData.items and (localData.items | length) %}
+    <ul class="c-awards__list">
+      {% for item in localData.items %}
+        <li class="c-awards__item">
+          <span class="c-awards__icon" aria-hidden="true">
+            {% include "components/svg/laurel.svg" %}
+          </span>
+          <span class="c-awards__text">{{ item.text }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</section>
+{% endmacro %}
+

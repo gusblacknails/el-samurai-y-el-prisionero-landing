@@ -1,0 +1,274 @@
+//
+// Components / Hero
+// ==========================================================================
+
+
+.c-hero {
+  position: relative;
+  min-height: 100vh;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+.c-hero__inner {
+  position: absolute;
+  inset: 0;
+  padding: var(--space-48) var(--space-32);
+
+  // Safari
+  height: 100%;
+  width: 100%;
+  overflow-y: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  // Overlay entre video/imagen y logo (mismo efecto que el que tenía el tráiler)
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+}
+
+
+.c-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  // Safari
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  .c-hero--has-info &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    width: 100%;
+    height: var(--space-80);
+    z-index: 2;
+    
+    @include breakpoint(lg) {
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+
+  .c-hero--has-info &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    bottom: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.6));
+    z-index: 2;
+  }
+}
+
+
+.c-hero__bg-image {
+  @include image-cover;
+  overflow: hidden;
+
+  img {
+    height: 120% !important;
+    top: -10% !important;
+  }
+}
+
+
+.c-hero__bg-video {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  inset: 0;
+  overflow: hidden;
+
+  video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+
+
+
+
+// Hero Info (Logo + Trailer)
+// ========================================
+
+
+.c-hero__info {
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--space-64) var(--space-16) var(--space-48);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+
+  @include breakpoint(lg) {
+    padding: var(--space-56) var(--space-32) var(--space-40);
+  }
+}
+
+.heroTitleWrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  @include breakpoint(md) {
+    // max-width: 600px;
+    // transform: scale(0.6);
+  }
+
+  @include breakpoint(lg) {
+    max-width: 700px;
+    // transform: scale(0.7);
+  }
+}
+
+.c-hero__logo {
+  display: none; // Unused class in HTML
+}
+
+
+.c-hero__buttons-wrapper {
+  margin: var(--space-32) auto 0;
+  flex: 0 0 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  // Safari
+  // gap: var(--space-16);
+}
+
+
+.c-hero__button {
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: var(--space-4);
+  font-weight: bold;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  text-transform: uppercase !important;
+  color: white;
+ 
+  background: transparent !important;
+  background-color: transparent !important;
+  text-decoration: none;
+  transition: all var(--transition-base);
+  border: 2px solid white !important;
+  margin: var(--space-8);
+  box-shadow: none;
+  will-change: transform;
+
+  &:hover {
+    color: white !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: var(--shadow-lg);
+  }
+
+  &:active {
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+}
+.c-menu__anchor:hover {
+  color: var(--color-bg-secondary) !important;
+}
+.--page-at-top .c-menu__anchor:hover {
+  color: var(--color-bg-secondary) !important;
+}
+
+.arrow-down {
+  position: fixed; /* posición fija */
+  bottom: var(--space-32); /* distancia desde abajo */
+  left: 50%; /* centrado horizontalmente */
+  transform: translateX(-50%);
+  z-index: 999; /* poner la flecha en la parte superior */
+  transition: opacity 0.3s ease-in-out; /* transición suave de opacidad */
+
+  @include breakpoint(lg) {
+    bottom: var(--space-40);
+    left: 0px;
+    bottom: 0px;
+    transform: none;
+  }
+}
+
+.arrow {
+  display: inline-block; /* mostrar como un bloque */
+  width: 20px; /* ancho */
+  height: 20px; /* alto */
+  border: solid white; /* borde blanco */
+  border-width: 0 3px 3px 0; /* dimensiones del borde para crear la flecha */
+  transform: rotate(45deg); /* rotar 45 grados */
+  transition: transform 0.3s ease-in-out; /* transición suave de rotación */
+}
+
+.arrow-hide {
+  opacity: 0; /* ocultar la flecha */
+}
+
+.arrow-rotate {
+  transform: rotate(225deg); /* rotar 225 grados para apuntar hacia arriba */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+ 

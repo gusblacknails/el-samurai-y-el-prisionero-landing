@@ -1,0 +1,282 @@
+//
+// Components / Gallery
+// ==========================================================================
+
+.c-gallery-section {
+  @include section-margins;
+  position: relative;
+  color: white;
+  box-sizing: border-box;
+
+  // Overlay oscuro fijo para mantener la oscuridad (no se aclare al cargar)
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .u-container,
+  .c-gallery-section__wrapper,
+  .c-gallery-section__wrapper--2,
+  .c-gallery-section__thumbnails {
+    position: relative;
+    z-index: 1;
+  }
+
+  @include breakpoint(md) {
+    margin-top: var(--space-40) !important;
+    margin-bottom: var(--space-40) !important;
+    margin-left: var(--space-40) !important;
+    margin-right: var(--space-40) !important;
+  }
+}
+
+// In horizontal scroll mode, apply margins to content wrapper instead
+body.horizontal-scroll-active {
+  .c-gallery-section {
+    @include breakpoint(md) {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
+}
+
+.c-gallery-section__title {
+  margin-bottom: var(--space-40);
+  padding: 0 var(--space-16);
+  font-family: var(--font-display);
+  font-size: var(--fontSize-40);
+  color: var(--color-accent);
+  line-height: var(--lineHeight-120);
+  text-align: center;
+  width: 100%;
+}
+
+.c-gallery-section__wrapper {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 70vh;
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+#masterWrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+
+#panelWrap {
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-slide {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  position: relative;
+  background-color: var(--color-accent);
+  margin: 12px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.dots {
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+}
+
+.gallery-arrow {
+  position: absolute;
+  z-index: 100;
+  right: 12px;
+  cursor: pointer;
+  opacity: 0.75;
+  width: 40px;
+  height: 40px;
+  
+  &:hover {
+    opacity: 1;
+  }
+  
+  g {
+    stroke: var(--color-accent);
+    stroke-width: 8px;
+    fill: none;
+  }
+}
+
+#gallery-downArrow {
+  bottom: 12px;
+  top: auto;
+}
+
+#gallery-upArrow {
+  top: 12px;
+  bottom: auto;
+}
+
+// Thumbnails styles (shared across all variants)
+.c-gallery-section__thumbnails {
+  width: 100%;
+  max-width: 1400px;
+  margin: var(--space-24) auto 0;
+  display: flex;
+  gap: var(--space-8);
+  padding: var(--space-8) 0;
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.c-gallery-section__thumbnail-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  width: 80px;
+  height: 60px;
+  border-radius: 4px;
+  overflow: visible;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 1;
+  
+  &:hover {
+    transform: scale(1.1);
+    z-index: 2;
+  }
+}
+
+.c-gallery-section__thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+}
+
+.c-gallery-section__thumbnail-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.c-gallery-section__thumbnail-wrapper.active {
+  .c-gallery-section__thumbnail-overlay {
+    opacity: 0;
+    background-color: transparent;
+  }
+  
+  border: 2px solid var(--color-accent);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+// Observer variant styles (variant 2)
+.c-gallery-section--2 {
+  .c-gallery-section__wrapper--2 {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 70vh;
+    min-height: 500px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-primary);
+    border-radius: 8px;
+  }
+
+  .c-gallery-section__main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  .c-gallery-section__pic {
+    position: absolute;
+    user-select: none;
+    border-radius: 9px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 0;
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+
+  .c-gallery-section__menu {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: visible;
+  }
+
+  .c-gallery-section__boxes {
+    fill: var(--color-accent);
+  }
+
+  .c-gallery-section__lock-box {
+    fill: rgba(0, 0, 0, 0.25);
+  }
+
+  .c-gallery-section__hit-areas {
+    cursor: pointer;
+  }
+
+  .c-gallery-section__counter {
+    pointer-events: none;
+    fill: var(--color-accent);
+  }
+}
+

@@ -1,0 +1,45 @@
+{#
+    Component Text and Image TWO
+    ========================================
+
+    "sections": {
+        {
+            "type": "textAndImageTwo",
+            "data": {
+                "id": "thomas", (optional)
+                "subtitle": "Thomas /", (optional)
+                "title": "Eirik Sæther",
+                "image": "assets/images/thomas.webp",
+                "text": "<p>...</p>",
+            }
+        },
+    }
+#}
+
+{% macro component(localData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-text-and-image-two--" + variant %}
+<section class="c-text-and-image-two {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+    <div class="u-container">
+
+        <div class="u-col u-col-px u-col-12 u-md-col-5 u-xl-col-5">
+            <div class="c-text-and-image-two__title-wrapper">
+                <h3 class="c-text-and-image-two__subtitle">{{ localData.subtitle }}</h3>
+                <h2 class="c-text-and-image-two__title">{{ localData.title }}</h2>
+            </div>
+        </div>
+
+        <div class="u-col u-col-px u-col-12 u-md-col-7 u-xl-col-6">
+            <div class="c-text-and-image-two__content">
+
+                <img
+                    class="c-text-and-image-two__image"
+                    src="{{ localData.image }}"
+                    alt="{{ localData.title }}"
+                >
+                <div class="c-text-and-image-two__text c-wysiwyg">{{ localData.text | safe }}</div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endmacro %}

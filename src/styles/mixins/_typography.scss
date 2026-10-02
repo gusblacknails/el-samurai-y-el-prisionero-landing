@@ -1,0 +1,20 @@
+//
+// Typography
+// ================================================================================
+
+
+@mixin typo-sectionTitle {
+  font-family: var(--font-display);
+  font-size: var(--fontSize-24);
+  color: var(--color-accent);
+  text-align: center;
+}
+
+
+@mixin typo-legend {
+  font-family: var(--font-base);
+  font-size: var(--fontSize-14);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: var(--color-accent);
+}

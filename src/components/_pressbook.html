@@ -1,0 +1,92 @@
+{#
+    Component Pressbook
+    Layouts: article | cast | interview | credits
+#}
+
+{% macro component(localData, variant) %}
+{% set variant = variant | default('fade-up') %}
+{% set variantClass = "c-pressbook--" + variant %}
+
+<section
+    class="c-pressbook c-pressbook--layout-{{ localData.layout }} {{ variantClass }}"
+    id="{{ localData.id }}"
+    data-gsap-variant="{{ variant }}"
+>
+    <div class="c-pressbook__inner">
+        {% if localData.title %}
+        <header class="c-pressbook__header">
+            {% if localData.eyebrow %}
+            <p class="c-pressbook__eyebrow">{{ localData.eyebrow }}</p>
+            {% endif %}
+            <h2 class="c-pressbook__title">{{ localData.title }}</h2>
+            {% if localData.subtitle %}
+            <p class="c-pressbook__subtitle">{{ localData.subtitle }}</p>
+            {% endif %}
+        </header>
+        {% endif %}
+
+        {% if localData.layout == 'article' %}
+        <div class="c-pressbook__article{% if localData.image %} c-pressbook__article--has-image c-pressbook__article--image-{{ localData.imagePosition | default('right') }}{% endif %}">
+            {% if localData.image %}
+            <figure class="c-pressbook__figure">
+                <img src="{{ localData.image }}" alt="{{ localData.imageAlt | default(localData.title) }}">
+            </figure>
+            {% endif %}
+            <div class="c-pressbook__body c-wysiwyg">
+                {% if localData.lead %}
+                <p class="c-pressbook__lead">{{ localData.lead }}</p>
+                {% endif %}
+                {{ localData.text | safe }}
+            </div>
+        </div>
+
+        {% elif localData.layout == 'cast' %}
+        <div class="c-pressbook__cast">
+            {% for member in localData.members %}
+            <article class="c-pressbook__cast-card">
+                {% if member.image %}
+                <div class="c-pressbook__cast-media">
+                    <img class="c-pressbook__cast-image" src="{{ member.image }}" alt="{{ member.name }}">
+                </div>
+                {% endif %}
+                <div class="c-pressbook__cast-text">
+                    <h3 class="c-pressbook__cast-name">{{ member.name }}</h3>
+                    <p class="c-pressbook__cast-role">{{ member.role }}</p>
+                    <p class="c-pressbook__cast-bio">{{ member.bio }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        {% elif localData.layout == 'interview' %}
+        <div class="c-pressbook__interview">
+            {% for item in localData.items %}
+            <div class="c-pressbook__qa">
+                <h3 class="c-pressbook__question">{{ item.question }}</h3>
+                <div class="c-pressbook__answer c-wysiwyg">
+                    <p>{{ item.answer }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% elif localData.layout == 'credits' %}
+        <div class="c-pressbook__credits">
+            {% for group in localData.groups %}
+            <div class="c-pressbook__credits-group">
+                <h3 class="c-pressbook__credits-heading">{{ group.title }}</h3>
+                <dl class="c-pressbook__credits-list">
+                    {% for row in group.rows %}
+                    <div class="c-pressbook__credits-row">
+                        <dt>{{ row.label }}</dt>
+                        <dd>{{ row.value }}</dd>
+                    </div>
+                    {% endfor %}
+                </dl>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endmacro %}

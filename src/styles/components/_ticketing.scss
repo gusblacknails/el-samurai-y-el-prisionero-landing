@@ -1,0 +1,52 @@
+//
+// Components / Ticketing
+// ==========================================================================
+
+
+.c-ticketing {
+  padding: var(--space-80) 0 var(--space-40) 0;
+
+  background-color: var(--color-bg-secondary);
+  border-top: 1px solid rgba(var(--color-black), 0.2);
+  border-bottom: 1px solid rgba(var(--color-black), 0.2);
+
+  @include breakpoint(md) {
+    // padding: var(--space-80) 0;
+  }
+
+  @include breakpoint(lg) {
+    // padding: var(--space-96) 0;
+  }
+
+  @include breakpoint(xxl) {
+    // padding: var(--space-120) 0;
+  }
+}
+
+
+.c-ticketing__wrapper {
+  // position: relative; #Corrige tamaño iframe ticketing para que ocupe todo el height
+  width: 100%;
+  // padding-bottom: calc( (100*(9/16)) * 1% );
+  // height: 60vh;
+
+  // Safari
+  @supports (-webkit-touch-callout: none) and (not (translate: none)) {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  iframe {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+
+    // border: 1px solid rgba(var(--color-black), 0.2);
+  }
+
+  @include breakpoint(md) {
+    // padding-bottom: calc( (100*(9/16)) * 1% );
+    // height: 66vh;
+  }
+}

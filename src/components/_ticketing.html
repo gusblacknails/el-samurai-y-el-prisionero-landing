@@ -1,0 +1,62 @@
+{#
+    Component Ticketing
+    ========================================
+
+    "sections": {
+        {
+            "type": "ticketing",
+            "data": {
+                "id": "entradas", (optional)
+                "iframe": "<iframe ...></iframe>"
+            }
+        },
+    }
+#}
+
+{% macro component(localData, siteData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-ticketing--" + variant %}
+
+
+
+<section class="c-ticketing {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}" {% if localData.iframeUrl %}data-iframe-url="{{ localData.iframeUrl }}"{% endif %}>
+    <div class="u-container u-container--center">
+      <div class="u-col u-col _u-col-px u-col-12">
+        <div class="c-ticketing__wrapper">
+          
+          <!-- Mensaje de aviso mientras el iframe carga -->
+          <div id="ticketing-loading-{{ localData.id }}" class="c-ticketing__loading" style="color: black; font-weight: bold; ">
+            {{ localData.loadingText }}
+          </div>
+          
+
+          <div id="ticketing-container-{{ localData.id }}"></div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+ 
+    .c-ticketing__loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+    .c-ticketing,
+    .c-ticketing__wrapper,
+    div[id^="ticketing-container-"] {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    div[id^="ticketing-container-"] iframe {
+        display: block;
+        width: 100%;
+        height: 100vh; /* Ocupa toda la altura visible */
+        max-height: 100vh;
+        border: none;
+    }
+</style>
+
+{% endmacro %}

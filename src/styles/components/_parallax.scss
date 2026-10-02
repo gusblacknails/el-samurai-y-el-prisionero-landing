@@ -1,0 +1,111 @@
+//
+// Components / Parallax
+// ==========================================================================
+
+.c-parallax {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  overflow: hidden;
+
+  .parallax-window {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    background: transparent;
+  }
+
+}
+
+// In horizontal mode, parallax images are fixed behind scrolling content
+body.horizontal-scroll-active {
+  .c-parallax__image {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    will-change: opacity;
+    z-index: 1; // Behind content but above body background
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+
+    // Corregir imagen blanquecina: más contraste y saturación
+    filter: contrast(1.08) saturate(1.15) brightness(0.95);
+
+    // Dark overlay for better text contrast
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+      opacity: 1;
+    }
+  }
+
+  // Ensure content is above parallax image
+  .c-main {
+    position: relative;
+    z-index: 2;
+  }
+  
+  // Sections/components can have transparent backgrounds to show parallax
+  .c-main > section,
+  .c-main > .c-hero,
+  .c-main > .c-intro,
+  .c-main > .c-gallery-section,
+  .c-main > .c-quotes,
+  .c-main > .c-video,
+  .c-main > .c-details,
+  .c-main > .c-call-to-action,
+  .c-main > .c-logos,
+  .c-main > .c-share,
+  .c-main > .c-follow-us,
+  .c-main > .c-text-and-image-one,
+  .c-main > .c-text-and-image-two,
+  .c-main > .c-image,
+  .c-main > .c-ticketing,
+  .c-main > .c-parallax,
+  .c-main > .c-sorteo,
+  .c-main > .c-custom {
+    position: relative;
+    z-index: 2;
+  }
+  
+  // Parallax container itself should be transparent when active
+  .c-parallax.--is-active {
+    background: transparent !important;
+  }
+  
+  // Menu should be above parallax too
+  .c-menu {
+    z-index: 1000 !important;
+    background-color: var(--color-bg-primary) !important;
+  }
+
+}
+
+// In vertical mode, use normal parallax behavior
+body:not(.horizontal-scroll-active) {
+  .c-parallax__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    will-change: transform;
+  }
+}
+

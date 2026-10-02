@@ -1,0 +1,90 @@
+{#
+    Component Text and Image ONE
+    ========================================
+
+    "sections": {
+        {
+            "type": "textAndImageOne",
+            "data": {
+                "id": "thomas", (optional)
+                "subtitle": "Thomas /", (optional)
+                "title": "Eirik Sæther",
+                "image": "assets/images/thomas.webp",
+                "text": "<p>...</p>",
+                "reverseOrder": true (optional)
+            }
+        },
+    }
+#}
+
+{% macro component(localData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-text-and-image-one--" + variant %}
+
+{% if localData.reverseOrder %}
+    {% set reverseOrderClass = "c-text-and-image-one--reverse" %}
+{% endif %}
+
+<style>
+   .module_container {
+      margin: 1em ;
+      text-align: center;
+    }
+  
+    .c-text-and-image-one__subtitle {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 0;
+    }
+  
+    .container__image {
+      display: none;
+        padding-right: 1em;
+      max-width: 63%;
+      float: left;
+      margin: 5px;
+    }
+  
+    p {
+      text-align: justify;
+      font-size: large;
+    }
+    @media (min-width: 768px) {
+    .c-text-and-image-one {
+        flex-direction: row;
+    }
+
+    .container__image {
+        width: 50%;
+        height: auto;
+    }
+
+    .c-text-and-image-one__content {
+        width: 50%;
+    }
+    .module_container {
+      margin: 2em ;
+      text-align: center;
+    }
+    }
+
+
+  </style>  
+<section class="c-text-and-image-one {{ variantClass }} {{ reverseOrderClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+    <div class="module_container">
+
+      
+            <img
+                class="container__image"
+                src=" {{ localData.image }}"
+                alt="{{ localData.title }}"
+            >
+           
+
+                {% if localData.subtitle %}
+                <h3 class="c-text-and-image-one__subtitle">{{ localData.subtitle }}</h3>
+                {% endif %}
+                <h2 class="c-text-and-image-one__title">{{ localData.title }}</h2>
+                <div class="c-text-and-image-one__text c-wysiwyg">{{ localData.text | safe }}</div>    
+
+    </div>
+</section>
+{% endmacro %}

@@ -1,0 +1,119 @@
+//
+// Logos + Share (bloque unificado)
+// ==========================================================================
+
+.c-logos-and-share {
+  padding: var(--space-40) var(--space-16);
+  background-color: var(--color-bg-primary);
+  color: var(--color-base);
+  border-top: 1px solid rgba(var(--color-black), 0.2);
+  border-bottom: 1px solid rgba(var(--color-black), 0.2);
+}
+
+.c-logos-and-share__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-48);
+
+  @include breakpoint(md) {
+    gap: var(--space-64);
+  }
+}
+
+.c-logos-and-share__block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.c-logos-and-share__title {
+  margin-bottom: var(--space-24);
+  padding: 0 var(--space-16);
+  font-family: var(--font-display);
+  font-size: var(--fontSize-24);
+  color: var(--color-accent);
+  line-height: var(--lineHeight-120);
+  text-transform: uppercase;
+
+  @include breakpoint(md) {
+    font-size: var(--fontSize-32);
+    margin-bottom: var(--space-32);
+  }
+}
+
+.c-logos-and-share__logos-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-24);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c-logos-and-share__logo-item {
+  flex-shrink: 0;
+}
+
+.c-logos-and-share__img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-height: 100px;
+    width: auto;
+    object-fit: contain;
+
+    @include breakpoint(md) {
+      max-height: 140px;
+    }
+  }
+}
+
+a.c-logos-and-share__img-container {
+  transition: opacity 0.2s ease-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.c-logos-and-share__icons-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c-logos-and-share__anchor {
+  width: var(--space-48);
+  height: var(--space-48);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-bg-primary);
+  background-color: var(--color-accent);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+
+  svg {
+    width: var(--space-24);
+    height: var(--space-24);
+  }
+
+  &:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}

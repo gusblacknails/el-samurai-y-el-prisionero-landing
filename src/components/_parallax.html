@@ -1,0 +1,34 @@
+{# Component Parallax ======================================== 
+    "sections": { {
+        "type": "parallax", 
+        "data": { "id": "image-end", (optional) 
+        "title": "", 
+        "mobile":"assets/images/image-end--mobile.webp", 
+        "desktop":"assets/images/image-end--desktop.webp" } 
+        } 
+    } 
+#} 
+        
+{% macro component(localData, variant)%} {% set variant = variant | default('default') %} {% set variantClass = "c-parallax--" + variant %}
+
+<div class="parallax-window c-parallax {{ variantClass }}" data-parallax="scroll" data-image-src="{{ localData.image }}" data-gsap-variant="{{ variant }}" data-parallax-image="{{ localData.image }}">
+</div>
+<style>
+    .parallax-window {
+    min-height: 600px;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+.c-parallax__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+</style>
+{% endmacro %}

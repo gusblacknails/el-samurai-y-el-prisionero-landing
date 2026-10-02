@@ -1,0 +1,73 @@
+{#
+    Component Share
+    ========================================
+
+    "sections": [
+        {
+            "type": "share",
+            "data": {
+                "id": "share", (optional)
+                "title": "Comparte!", (optional)
+                "background": "assets/images/share-background.jpg" (optional)
+            }
+        }
+    ]
+#}
+
+{% macro component(localData, siteData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-share--" + variant %}
+
+{% set linkTwitter = ["https://twitter.com/intent/tweet?url=", siteData.url, "&text=", siteData.movieName] | join %}
+{% set linkFacebook = ["https://www.facebook.com/sharer/sharer.php?u=", siteData.url] | join %}
+{% set linkLinkedin = ["https://www.linkedin.com/shareArticle?mini=true&url=", siteData.url] | join %}
+{% set linkMail = ["mailto:?&subject=Mira ", siteData.movieName, "&body=", siteData.url] | join %}
+
+<section class="c-share {{ variantClass }}" id="{{ localData.id }}" {% if localData.background %}style="background-image: url('{{ localData.background }}');"{% endif %} data-gsap-variant="{{ variant }}">
+
+    <div class="u-container u-container--center">
+
+        {% if localData.title %}
+        <div class="u-col u-col-px u-col-12">
+            <h2 class="c-share__title">{{ localData.title }}</h2>
+        </div>
+        {% endif %}
+
+        <div class="u-col u-col-px u-col-12">
+            <ul class="c-share__icons-list">
+
+                {# Twitter #}
+                <li class="c-share__icon">
+                    <a href="{{ linkTwitter }}" target="_blank" class="c-share__anchor" title="Comparte en Twitter">
+                        {% include 'components/svg/twitter.svg' %}
+                    </a>
+                </li>
+
+                {# Facebook #}
+                <li class="c-share__icon">
+                    <a href="{{ linkFacebook }}" target="_blank" class="c-share__anchor" title="Comparte en Facebook">
+                        {% include 'components/svg/facebook.svg' %}
+                    </a>
+                </li>
+
+                {# LinkedIn #}
+                <li class="c-share__icon">
+                    <a href="{{ linkLinkedin }}" target="_blank" class="c-share__anchor" title="Comparte en LinkedIn">
+                        {% include 'components/svg/linkedin.svg' %}
+                    </a>
+                </li>
+
+                {# Mail #}
+                <li class="c-share__icon">
+                    <a href="{{ linkMail }}" target="_blank" class="c-share__anchor" title="Comparte por Correo">
+                        {% include 'components/svg/mail.svg' %}
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+
+
+    </div>
+
+</section>
+{% endmacro %}

@@ -1,0 +1,111 @@
+//
+// Components / Footer
+// ==========================================================================
+
+
+.c-footer {
+  background-color: var(--color-bg-secondary);
+}
+
+
+.c-footer__section {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-40) var(--space-16);
+
+  border-bottom: 1px solid rgba(var(--color-black), 0.20);
+
+  @include breakpoint(md) {
+    // min-height: var(--space-240);
+    height: 100%;
+    padding: var(--space-40) var(--space-16) var(--space-20) var(--space-16);
+
+    border-bottom: none;
+    border-left: 1px solid rgba(var(--color-black), 0.20);
+  }
+}
+
+
+
+
+
+// Movie Logo
+
+
+.c-footer__movie-logo-img {
+  max-width: 81%;
+}
+
+
+
+
+
+// Company Copyright
+
+
+.c-footer__copyright {
+
+  @include breakpoint(md) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+
+.c-footer__copyright-logo {
+  display: block;
+  max-width: 66%;
+  margin-bottom: var(--space-40);
+
+  transition: opacity 0.2s ease-out;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  @include breakpoint(lg) {
+    max-width: 50%
+  }
+}
+
+
+.c-footer__copyright-texts {
+  @include typo-legend;
+  color: var(--color-base);
+  opacity: 0.5;
+}
+
+
+
+
+
+// Legal Links
+
+
+.c-footer__legal-links {
+
+  @include breakpoint(md) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}
+
+
+.c-footer__legal-links a:link,
+.c-footer__legal-links a:visited {
+  @include typo-legend;
+  color: var(--color-base);
+  opacity: 0.5;
+  text-decoration: none;
+
+  transition: opacity 0.2s ease-out;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+ .u-container--align-stretch{
+  display:none !important;
+}

@@ -1,0 +1,94 @@
+{#
+    Component Quotes
+    ========================================
+
+    "sections": {
+        {
+            "type": "quotes",
+            "data": {
+                "id": "opiniones", (optional)
+                "title": "La crítica dice...", (optional)
+                "background": "assets/images/quotes-background.png" (optional)
+                "quotes": [
+                    {
+                        "image": null, (optional)
+                        "text": "Una película inolvidable...", (optional)
+                        "authorName": "Cineuropa", (optional)
+                        "authorMedia": "Cineuropa", (optional)
+                        "linkURL": "https://www.instagram.com/adso_films/?hl=en" (optional)
+                    },
+                    ...
+                ]
+            }
+        },
+    }
+#}
+
+{% macro component(localData, variant) %} {% set variant = variant | default('default') %} {% set variantClass = "c-quotes--" + variant %}
+<section class="c-quotes {{ variantClass }}" id="{{ localData.id }}" data-gsap-variant="{{ variant }}">
+
+    {% if localData.title %}
+    <h2 class="c-quotes__title">{{ localData.title }}</h2>
+    {% endif %}
+
+    <div class="c-quotes__container">
+
+        {% if localData.background %}
+        <div class="c-quotes__bg">
+            <img src=" {{ localData.background }}" role="presentation" class="c-quotes__bg-img">
+        </div>
+        {% endif %}
+
+        <div class="c-quotes__quote-list">
+            {% for quote in localData.quotes %}
+                <div class="c-quotes__quote-wrapper">
+
+                    {% if quote.image %}
+                    <div class="c-quotes__quote-img" role="presentation">
+                        <img src=" {{ quote.image }}" />
+                    </div>
+                    {% endif %}
+
+                    {% if quote.text %}
+                    <div class="c-quotes__text">{{ quote.text }}</div>
+                    {% endif %}
+
+                    {% if quote.authorName or quote.authorMedia %}
+                    <div class="c-quotes__author">
+
+                        {% if quote.authorName %}
+                        <div class="c-quotes__name">{{ quote.authorName }}</div>
+                        {% endif %}
+
+                        {% if quote.authorMedia %}
+                        <div class="c-quotes__media">{{ quote.authorMedia }}</div>
+                        {% endif %}
+
+                    </div>
+                    {% endif %}
+
+                    {% if quote.linkURL %}
+                    <a href="{{ quote.linkURL }}" target="_blank" class="c-quotes__link" aria-label="Leer artículo">
+                        {% include "components/svg/link.svg" %}
+                    </a>
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="c-quotes__nav">
+            <div class="c-slider-nav">
+                <button class="c-slider-nav__arrow c-slider-nav__arrow--prev">
+                    {% include "components/svg/arrow-left.svg" %}
+                </button>
+                <button class="c-slider-nav__arrow c-slider-nav__arrow--next">
+                    {% include "components/svg/arrow-right.svg" %}
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+{% endmacro %}

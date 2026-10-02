@@ -1,0 +1,151 @@
+//
+// Grid system
+// ================================================================================
+
+@use "sass:math";
+
+/*
+ * MicroBlocks' design uses full widht fluid contents, divided by columns.
+ * The idea behind this grid is to work full width. Columns themselves will not
+ * have an inner padding. Thus it will be aplied to the column independently.
+ *
+ * Example:
+ * .container
+ *   .col xs-col-12 .md-col-8 .md-px-8
+ *     .text
+ *   .col xs-col-12 .md-col-4 .md-px-0
+ *     .picture
+ *
+**/
+
+
+// Common Styles
+// ==============================================================================
+
+.u-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: auto;
+  margin-left: auto;
+
+
+  // Breakpoint Widths
+  @each $breakpoint-name, $breakpoint-value in $breakpoints {
+    @include breakpoint( #{$breakpoint-name} ) {
+      width: map-get($containerWidths, $breakpoint-name);
+    }
+  }
+
+
+  // Exceptions
+
+  &--center {
+    justify-content: center;
+  }
+
+  &--between {
+    justify-content: space-between;
+  }
+
+  &--align-stretch {
+    align-items: stretch;
+  }
+}
+
+.u-col {
+  flex: 0 0 auto;
+}
+
+
+// Columns Generation
+// ==============================================================================
+
+@each $breakpoint-name, $breakpoint-value in $breakpoints {
+
+  @if $breakpoint-name == 'xs' {
+
+    @for $i from 1 to ($col-total + 1) {
+      .u-col-#{$i} {
+        width: percentage( math.div($i, $col-total) );
+      };
+      .u-offset-#{$i} {
+        margin-left: percentage( math.div($i, $col-total) );
+      }
+    }
+
+  } @else {
+
+    @include breakpoint( #{$breakpoint-name} ) {
+      @for $i from 0 to ($col-total + 1) {
+
+        .u-#{$breakpoint-name}-col-#{$i} {
+          width: percentage( math.div($i, $col-total) );
+        };
+        .u-#{$breakpoint-name}-offset-#{$i} {
+          margin-left: percentage( math.div($i, $col-total) );
+        };
+      }
+    }
+  }
+}
+
+
+// Padding - If column has padding
+//
+// .col-px-none: padding x axis is 0
+// .col-px: padding x axis is $col-padding
+// .col-pl: 'padding-left: $col-padding / 2' and 'padding-right = 0'
+// .col-pr: 'padding-left: 0' and 'padding-right: $col-padding / 2'
+// ==============================================================================
+
+@each $breakpoint-name, $breakpoint-value in $breakpoints {
+
+  @if $breakpoint-name == 'xs' {
+
+    .u-col-px-none {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .u-col-px {
+      padding-left: math.div($col-padding, 2);
+      padding-right: math.div($col-padding, 2);
+    }
+
+    .u-col-pl {
+      padding-left: math.div($col-padding, 2);
+      padding-right: 0;
+    }
+
+    .u-col-pr {
+      padding-left: 0;
+      padding-right: math.div($col-padding, 2);
+    }
+
+  } @else {
+
+    @include breakpoint( #{$breakpoint-name} ) {
+
+      .u-#{$breakpoint-name}-col-px-none {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .u-#{$breakpoint-name}-col-px {
+        padding-left: math.div($col-padding, 2);
+        padding-right: math.div($col-padding, 2);
+      }
+
+      .u-#{$breakpoint-name}-col-pl {
+        padding-left: math.div($col-padding, 2);
+        padding-right: 0;
+      }
+
+      .u-#{$breakpoint-name}-col-pr {
+        padding-left: 0;
+        padding-right: math.div($col-padding, 2);
+      }
+
+    }
+  }
+}
