@@ -4,13 +4,12 @@ export function initVideoPlayers() {
     
     videoContainers.forEach(container => {
         const youtubeId = container.getAttribute('data-youtube-id');
-        if (!youtubeId) return;
-
         const playButton = container.querySelector('.c-video__play-button');
         const iframe = container.querySelector('iframe');
         const poster = container.querySelector('.c-video__poster');
-        
-        if (!playButton || !iframe) return;
+
+        // Sin ID de YouTube: el botón play es solo visual (disabled en HTML)
+        if (!youtubeId || !iframe || !playButton) return;
 
         // Function to play video using postMessage (more reliable on mobile)
         function playVideo() {

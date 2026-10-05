@@ -23,19 +23,21 @@
             {{ localData.title | safe }}
         </h2>
         <div class="u-col u-col u-col-px u-col-12">
-            <div class="c-video__video" data-youtube-id="{{ localData.youtubeId if localData.youtubeId else '' }}">
+            <div class="c-video__video{% if not localData.youtubeId and not localData.iframe %} c-video__video--poster-only{% endif %}" data-youtube-id="{{ localData.youtubeId if localData.youtubeId else '' }}">
                 {% if localData.poster %}
                 <img src="{{ localData.poster }}" alt="Poster del trailer" class="c-video__poster">
                 {% endif %}
                 {% if localData.iframe %}
                     {{ localData.iframe | safe }}
-                {% elif localData.youtubeId %}
-                    <button class="c-video__play-button" aria-label="Reproducir video">
-                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="40" cy="40" r="40" fill="var(--color-accent)"/>
-                            <path d="M32 24L32 56L56 40L32 24Z" fill="var(--color-base)"/>
-                        </svg>
-                    </button>
+                {% endif %}
+                {# Botón play siempre visible; con youtubeId captura el click, sin él queda como CTA visual #}
+                <button class="c-video__play-button" type="button" aria-label="Reproducir tráiler"{% if not localData.youtubeId and not localData.iframe %} disabled{% endif %}>
+                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="40" cy="40" r="40" fill="var(--color-accent)"/>
+                        <path d="M32 24L32 56L56 40L32 24Z" fill="var(--color-bg-primary)"/>
+                    </svg>
+                </button>
+                {% if localData.youtubeId %}
                     <iframe 
                         id="youtube-iframe-{{ localData.id }}"
                         width="560" 
