@@ -297,7 +297,7 @@
     margin: 0 0 10px 0;
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: clamp(1.28rem, 0.35vw + 1.15rem, 1.4rem);
     line-height: 1.1;
     color: var(--color-base);
   }
@@ -311,8 +311,8 @@
 
   .c-cast-grid__bio{
     font-family: var(--font-base);
-    font-size: 1rem;
-    line-height: 1.55;
+    font-size: clamp(1.05rem, 0.3vw + 0.95rem, 1.15rem);
+    line-height: 1.6;
     max-width: 52ch;
     margin: 0 auto;
     opacity: 0.95;
@@ -376,8 +376,8 @@
   }
   .c-director-page__body{
     font-family: var(--font-base);
-    font-size: clamp(1rem, 0.7vw + 0.85rem, 1.2rem);
-    line-height: 1.65;
+    font-size: clamp(1.15rem, 0.45vw + 1rem, 1.3rem);
+    line-height: 1.7;
     max-width: 72ch;
   }
   .c-director-page__image img{
@@ -467,7 +467,7 @@
   .c-interview-page__subtitle{
     margin: 0 0 28px 0;
     font-family: var(--font-display);
-    font-size: 1.1rem;
+    font-size: clamp(1.15rem, 0.4vw + 1rem, 1.35rem);
     opacity: 0.85;
   }
   .c-interview-page__qa{
@@ -483,15 +483,15 @@
   .c-interview-page__question{
     margin: 0 0 12px 0;
     font-family: var(--font-display);
-    font-size: 1.05rem;
+    font-size: clamp(1.25rem, 0.6vw + 1.05rem, 1.5rem);
     font-weight: 600;
     color: var(--color-accent);
     line-height: 1.35;
   }
   .c-interview-page__answer{
     font-family: var(--font-base);
-    font-size: 1rem;
-    line-height: 1.65;
+    font-size: clamp(1.2rem, 0.55vw + 1.05rem, 1.4rem);
+    line-height: 1.7;
   }
   .c-interview-page__answer p{ margin: 0; }
 </style>

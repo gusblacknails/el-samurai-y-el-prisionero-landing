@@ -471,9 +471,11 @@ export function hasActiveInternalScroll(element) {
     const scrollTop = scrollElement.scrollTop;
     const scrollHeight = scrollElement.scrollHeight;
     const clientHeight = scrollElement.clientHeight;
+    const maxScroll = Math.max(0, scrollHeight - clientHeight);
     
-    // Check if scroll is not at bottom (with small tolerance)
-    const isAtBottom = scrollTop + clientHeight >= scrollHeight - 10;
+    // Tolerance: browsers often round scrollTop and never quite reach maxScroll
+    const EDGE = 3;
+    const isAtBottom = scrollTop >= maxScroll - EDGE;
     
     return !isAtBottom;
 }
@@ -495,19 +497,38 @@ export function scrollInternalScroll(element, deltaY) {
     const scrollTop = scrollElement.scrollTop;
     const scrollHeight = scrollElement.scrollHeight;
     const clientHeight = scrollElement.clientHeight;
-    const maxScroll = scrollHeight - clientHeight;
+    const maxScroll = Math.max(0, scrollHeight - clientHeight);
+
+    // If content doesn't overflow, don't consume — allow horizontal section change
+    if (maxScroll <= 0) {
+        return false;
+    }
+
+    // Tolerance for subpixel / integer rounding (common with trackpads)
+    const EDGE = 3;
+    const atBottom = scrollTop >= maxScroll - EDGE;
+    const atTop = scrollTop <= EDGE;
     
-    // Check if we can scroll in the requested direction
-    const canScrollDown = deltaY > 0 && scrollTop < maxScroll;
-    const canScrollUp = deltaY < 0 && scrollTop > 0;
+    const canScrollDown = deltaY > 0 && !atBottom;
+    const canScrollUp = deltaY < 0 && !atTop;
     
     if (canScrollDown || canScrollUp) {
-        const scrollAmount = Math.abs(deltaY) * 0.5; // Smooth scroll amount
-        const newScrollTop = deltaY > 0 
+        const scrollAmount = Math.max(Math.abs(deltaY) * 0.5, 1);
+        let newScrollTop = deltaY > 0 
             ? Math.min(scrollTop + scrollAmount, maxScroll)
             : Math.max(scrollTop - scrollAmount, 0);
+
+        // Snap to exact edge when within tolerance after this step
+        if (deltaY > 0 && newScrollTop >= maxScroll - EDGE) {
+            newScrollTop = maxScroll;
+        } else if (deltaY < 0 && newScrollTop <= EDGE) {
+            newScrollTop = 0;
+        }
         
         scrollElement.scrollTop = newScrollTop;
+
+        // If this gesture landed on the edge, still consume it once so the user
+        // doesn't skip a page; the *next* wheel/swipe will leave the section.
         return true;
     }
     

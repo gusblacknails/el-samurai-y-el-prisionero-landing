@@ -24,7 +24,7 @@
 
     <div class="c-menu__wrapper">
 
-        <a href="#top" class="c-menu__logo">
+        <a href="#hero" class="c-menu__logo" aria-label="{{ siteData.movieName }} — Inicio">
             <img src=" {{ localData.logo }}" alt="{{ siteData.movieName }}" class="c-footer__movie-logo-img"/>
         </a>
 
@@ -60,6 +60,20 @@
                 </a>
             </li>
             {% endfor %}
+            {% if localData.langSwitch and localData.langSwitch.links %}
+            <li class="c-menu__list-item c-menu__list-item--lang">
+                <div class="c-menu__lang" aria-label="Idioma">
+                    {% for langLink in localData.langSwitch.links %}
+                    {% if not loop.first %}<span class="c-menu__lang-sep" aria-hidden="true">|</span>{% endif %}
+                    <a
+                        class="c-menu__anchor c-menu__lang-link{% if langLink.active %} is-active{% endif %}"
+                        href="{{ langLink.url }}"
+                        {% if langLink.active %}aria-current="true"{% endif %}
+                    >{{ langLink.text }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+            {% endif %}
         </ul>
 
     </nav>

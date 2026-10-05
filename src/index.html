@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ data.config.lang | default('es') }}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,7 +40,7 @@
     <meta property="og:description" content="{{ data.site.description }}">
     <meta property="og:type" content=video.movie>
     <meta property="og:image" content="{{ data.site.image }}">
-    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale" content="{% if data.config.lang === 'ca' %}ca_ES{% else %}es_ES{% endif %}" />
 
     {# OpenGraph Twitter #}
     <meta name="twitter:card" content="summary_large_image">
@@ -187,10 +187,10 @@
         color: var(--color-accent) !important;
     }
     body {
-        font-family: var(--font-display);
-        background-image: url("");
-        color:#ffffff;
-       
+        font-family: var(--font-base);
+        background-color: var(--color-bg-primary);
+        background-image: none;
+        color: var(--color-base);
     }
     #logosDistribution {
         background-image: url("");
@@ -244,9 +244,10 @@
         }
 
    .section-screen, #trailer, #movie-details, .c-logos-and-share, .c-menu, .c-menu__nav, .c-custom--interview, footer{
-        background-image: url("https://www.transparenttextures.com/patterns/rice-paper-2.png") !important;
-        background-repeat: repeat;
-    }.c-custom--press{
+        background-color: var(--color-bg-primary);
+        background-image: none !important;
+    }
+    .c-custom--press{
         background-image: none !important;
     }
     @media (min-width: 1024px) {
@@ -258,6 +259,8 @@
         font-family: var(--font-display);
         text-transform: uppercase !important;
         font-size: 2.5rem;
+        letter-spacing: 0.06em;
+        color: var(--color-base);
     }
     .c-menu__anchor, .c-details__label{
         font-family: var(--font-display);
@@ -279,6 +282,29 @@
         background: none !important;
         border: none !important;
     }
+    .c-menu__lang {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+    }
+    .c-menu__lang-sep {
+        color: var(--color-accent);
+        opacity: 0.7;
+        font-family: var(--font-display);
+        line-height: 1;
+        flex-shrink: 0;
+    }
+    .c-menu__lang-link {
+        margin: 0 !important;
+        padding: 0 !important;
+        letter-spacing: 0.06em;
+        line-height: 1;
+    }
+    .c-menu__lang-link.is-active {
+        color: var(--color-accent) !important;
+        pointer-events: none;
+    }
     .c-logos__title{
         font-family: var(--font-display);
         
@@ -291,22 +317,34 @@
     .c-hero__button {
         background-color: transparent !important;
         font-family: var(--font-display);
-        color: white !important;
+        color: var(--color-base) !important;
         font-size: 0.9rem !important;
         text-transform: uppercase !important;
-        border-radius: 8px !important;
-        padding: 0.5rem 1rem !important;
-        border: 2px solid white !important;
+        letter-spacing: 0.08em;
+        border-radius: 0 !important;
+        padding: 0.55rem 1.15rem !important;
+        border: 1px solid var(--color-accent) !important;
 
     }
     .c-hero__button:hover {
         background-color: var(--color-accent) !important;
-        color: white !important;
+        color: var(--color-bg-primary) !important;
         
     }
  
     .c-menu__anchor:hover {
         color: var(--color-accent) !important;
+    }
+    .c-text-centered__text,
+    .c-details__value,
+    .c-intro__text {
+        font-family: var(--font-base);
+        color: var(--color-base);
+    }
+    .c-hero__info img {
+        max-width: min(72vw, 520px);
+        height: auto;
+        filter: drop-shadow(0 8px 24px rgba(0,0,0,0.55));
     }
     @media (min-width: 1024px) {
         body.hero-logo-not-loaded .c-menu__nav .c-menu__anchor {
@@ -323,7 +361,8 @@
     @media (max-width: 1024px) {
             .c-menu__logo img {
         height: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 0;
+        object-position: center center;
 
     } 
         .c-menu__nav {
@@ -332,7 +371,9 @@
         .c-menu__logo  {
             height: 100%;
             position: relative;
-            top: 11px;
+            top: 0;
+            display: flex;
+            align-items: center;
     }
     @media (min-width: 1280px) {
         #proyecto{

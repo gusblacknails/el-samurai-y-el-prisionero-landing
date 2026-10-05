@@ -70,8 +70,8 @@
     height: 130%;
     width: 100%;
     object-fit: contain;
-    object-position: center left;
-    margin-bottom: 22px;
+    object-position: center center;
+    margin-bottom: 0;
 
   }
 
@@ -95,16 +95,10 @@
   
       max-height: var(--space-56);
       object-fit: contain;
-      object-position: center left;
+      object-position: center center;
       max-width: 97px;
       position: relative;
-      bottom: 4px;
-    }
-
-    // Logo catalán más pequeño (el acento desborda si usa el mismo tamaño que cast)
-    img[src*="navbar_cat"] {
-      max-width: 68px;
-      max-height: 48px;
+      bottom: 0;
     }
 
     // Page at top - ocultar logo cuando está arriba
@@ -280,13 +274,7 @@
     max-height: var(--space-64);
     width: 100%;
     object-fit: contain;
-    object-position: center left;
-  }
-
-  // Logo catalán más pequeño en móvil también
-  img[src*="navbar_cat"] {
-    max-width: 58%;
-    max-height: 52px;
+    object-position: center center;
   }
 
   @include breakpoint(lg) {

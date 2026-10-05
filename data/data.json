@@ -2,80 +2,42 @@
     "data": {
         "basePath": "/",
         "site": {
-            "movieName": "La copia perfecta",
+            "movieName": "El samurái y el prisionero",
             "url": "https://www.adso.tv",
-            "description": "El hombre que hizo temblar a la banca francesa. Thriller histórico basado en hechos reales, dirigido por Jean-Paul Salomé y protagonizado por Reda Kateb, Sara Giraudeau y Bastien Bouillon.",
-            "image": "assets/images/LA COPIA PERFECTA_ESP_POSTER_CAST Medium.jpeg"
+            "description": "Cuando el señor Murashige Araki se rebela contra Nobunaga Oda, forja una alianza imposible con el estratega prisionero Kanbei Kuroda. Drama y misterio de Kiyoshi Kurosawa. Estreno 23 de octubre de 2026.",
+            "image": "assets/images/poster_esp.jpg"
         },
         "config": {
-            "googleFontsURL": "",
-            "fontBase": "Minion Pro, Georgia, serif",
-            "fontDisplay": "Teko, Neutraface Condensed Titling, sans-serif",
-            "colorBase": "#1a1a18",
-            "colorAccent": "#FBBD29",
-            "colorBgPrimary": "#f0ebe3",
-            "colorBgSecondary": "#e2d9cc",
-            "scrollMode": "horizontal-snap",
-            "sorteoFirebase": {
-                "apiKey": "AIzaSyBPw8p3Fo_wqRUN89Rv-fZPCqrCR-83PR4",
-                "authDomain": "sorteo-la-copia-perfecta.firebaseapp.com",
-                "projectId": "sorteo-la-copia-perfecta",
-                "storageBucket": "sorteo-la-copia-perfecta.firebasestorage.app",
-                "messagingSenderId": "936117304700",
-                "appId": "1:936117304700:web:9516ac6e0776d492ec78f9",
-                "measurementId": "G-7EYFV85G9D",
-                "collection": "participantes"
-            }
+            "lang": "es",
+            "googleFontsURL": "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap",
+            "fontBase": "Cormorant Garamond, Minion Pro, Georgia, serif",
+            "fontDisplay": "Bebas Neue, Univers LT Std, sans-serif",
+            "colorBase": "#e6e2d6",
+            "colorAccent": "#b5ae78",
+            "colorBgPrimary": "#0f1419",
+            "colorBgSecondary": "#1a222c",
+            "scrollMode": "horizontal-snap"
         },
         "menu": {
-            "logo": "/assets/images/logo_navbar_cast.png",
+            "logo": "/assets/images/logo_navbar_cast_2.png",
+            "langSwitch": {
+                "current": "ES",
+                "links": [
+                    { "text": "ES", "url": "/", "active": true },
+                    { "text": "CAT", "url": "/cat/", "active": false }
+                ]
+            },
             "links": [
-
-                {
-                    "text": "Sinopsis",
-                    "url": "#intro"
-                },
-                {
-                    "text": "Tráiler",
-                    "url": "#trailer"
-                },
-                {
-                    "text": "Ficha",
-                    "url": "#movie-details"
-                },
-                {
-                    "text": "Info",
-                    "url": "#sobre"
-                },
-                {
-                    "text": "Reparto",
-                    "url": "#reparto"
-                },
-                {
-                    "text": "Entrevista",
-                    "url": "#entrevista"
-                },
-                {
-                    "text": "Premios",
-                    "url": "#premios"
-                },
-                {
-                    "text": "Galería",
-                    "url": "#galeria"
-                },
-                {
-                    "text": "Críticas",
-                    "url": "#opiniones"
-                },
-                {
-                    "text": "Sorteo",
-                    "url": "#sorteo"
-                },
-                {
-                    "text": "Prensa",
-                    "url": "https://drive.google.com/drive/folders/1-rU3Kkqh0Y0xfJenuNzIf-ckEvpEWkDl",
-                    "target": "_blank"
-                }
+                { "text": "Sinopsis", "url": "#intro" },
+                { "text": "Tráiler", "url": "#trailer" },
+                { "text": "Ficha", "url": "#movie-details" },
+                { "text": "Info", "url": "#sobre" },
+                { "text": "Reparto", "url": "#reparto" },
+                { "text": "Entrevista", "url": "#entrevista" },
+                { "text": "Premios", "url": "#premios" },
+                { "text": "Galería", "url": "#galeria" },
+                { "text": "Críticas", "url": "#opiniones" },
+                { "text": "Prensa", "url": "https://www.adso.tv/prensa", "target": "_blank" }
             ]
         },
         "sections": [
@@ -85,11 +47,12 @@
                 "data": {
                     "id": "hero",
                     "image": {
-                        "mobile": "",
-                        "desktop": ""
+                        "mobile": "assets/images/poster_esp.jpg",
+                        "desktop": "assets/images/fotos/still_10.jpg"
                     },
-                    "video": "https://beka-media.b-cdn.net/landings-hero-videos/LA_COPIA_PERFECTA_TRL_GUS",
+                    "video": "",
                     "heroLogo": "assets/images/hero_cast.png",
+                    "subtitle": "Estreno en cines el 23 de Octubre de 2026",
                     "buttons": [
                         {
                             "text": "Ver Tráiler",
@@ -99,15 +62,14 @@
                     ]
                 }
             },
-
             {
                 "type": "textCentered",
                 "variant": "split-text",
                 "data": {
                     "id": "intro",
                     "title": "Sinopsis",
-                    "text": "París, posguerra. Jan Bojarski, un refugiado polaco, es conocido en el submundo como el «Cézanne de la falsificación». Durante quince años, mantiene una doble vida impecable: mientras su familia hace vida normal en casa, él fabrica en un cobertizo artesanal billetes de una precisión tal que logran burlar los controles del Banco de Francia. Esta maestría técnica lo convierte en la obsesión del comisario Mattei, iniciando una cacería humana que, para ambos, dejará de ser una cuestión de ley para convertirse en un duelo personal.",
-                    "backgroundImage": "images/fotos/LAffaire_Bojarski_BOJ1944 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg"
+                    "text": "Cuando el señor Murashige Araki se rebela contra el tiránico Nobunaga Oda, se ve asediado entre los muros de su propio castillo. Aislado, se enfrenta a una serie de misteriosos crímenes que hacen añicos el frágil orden de su corte, sumiendo a la fortaleza en el miedo y la desconfianza. Con el ejército de Oda cada vez más cerca y un traidor escondido entre sus filas, Murashige se ve obligado a forjar una incómoda alianza con Kanbei Kuroda, un brillante pero peligroso estratega que se encuentra prisionero en las mazmorras. Con la ayuda de su esposa Chiyoho y de sus generales más leales, Murashige debe descubrir la verdad antes de que el castillo caiga.",
+                    "backgroundImage": "images/fotos/still_01.jpg"
                 }
             },
             {
@@ -116,9 +78,9 @@
                 "data": {
                     "title": "Tráiler",
                     "id": "trailer",
-                    "youtubeId": "ng91fuf6t84",
-                    "poster": "assets/images/fondo_poster_trailer.png",
-                    "backgroundImage": "images/fotos/LAffaire_Bojarski_MAI4551b © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg"
+                    "youtubeId": "",
+                    "poster": "assets/images/fondo_poster_trailer.jpg",
+                    "backgroundImage": "images/fotos/still_20.jpg"
                 }
             },
             {
@@ -126,61 +88,21 @@
                 "variant": "stagger-list",
                 "data": {
                     "id": "movie-details",
-                    "poster": "/assets/images/LA COPIA PERFECTA_ESP_POSTER_CAST Medium.jpeg",
-                    "backgroundImage": "images/fotos/LAffaire_Bojarski_BOJ6032b © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
+                    "poster": "/assets/images/poster_esp.jpg",
+                    "backgroundImage": "images/fotos/still_16.jpg",
                     "specs": [
-                        {
-                            "label": "Título Original",
-                            "value": "L'Affaire Bojarski"
-                        },
-                        {
-                            "label": "Año",
-                            "value": "2025"
-                        },
-                        {
-                            "label": "Duración",
-                            "value": "128 min"
-                        },
-                        {
-                            "label": "Nacionalidad",
-                            "value": "Francia"
-                        },
-                        {
-                            "label": "Género",
-                            "value": "Drama"
-                        },
-                        {
-                            "label": "Dirección",
-                            "value": "Jean-Paul Salomé"
-                        },
-                        {
-                            "label": "Guion",
-                            "value": "Jean-Paul Salomé y Bastien Daret, con la colaboración de Delphine Gleize. Basado en una idea original de Marie-Pierre Huster"
-                        },
-                        {
-                            "label": "Reparto",
-                            "value": "Reda Kateb, Sara Giraudeau, Bastien Bouillon, Pierre Lottin, Quentin Dolmaire, Victor Poirier, Olivier Loustau. Con la participación de Lolita Chammah, Camille Japy y Arthur Teboul"
-                        },
-                        {
-                            "label": "V.O.",
-                            "value": "Francés"
-                        },
-                        {
-                            "label": "Formato",
-                            "value": "DCP"
-                        },
-                        {
-                            "label": "Sonido",
-                            "value": "5.1 Dolby Digital"
-                        },
-                        {
-                            "label": "Calificación",
-                            "value": "En trámite"
-                        },
-                        {
-                            "label": "Estreno en cines",
-                            "value": "10 de julio de 2026"
-                        }
+                        { "label": "Título Original", "value": "Kokurôjô (Kokurojo)" },
+                        { "label": "Año", "value": "2026" },
+                        { "label": "Duración", "value": "147 min" },
+                        { "label": "Nacionalidad", "value": "Japón" },
+                        { "label": "Género", "value": "Drama, misterio" },
+                        { "label": "Dirección y guion", "value": "Kiyoshi Kurosawa. Basada en la novela Kokurojo de Honobu Yonezawa (Kadokawa)" },
+                        { "label": "Reparto", "value": "Masahiro Motoki, Masaki Suda, Yuriko Yoshitaka, Munetaka Aoki, Ryota Miyadate, Tasuku Emoto, Joe Odagiri, Yusuke Santamaria" },
+                        { "label": "V.O.", "value": "Japonés" },
+                        { "label": "Formato", "value": "DCP" },
+                        { "label": "Sonido", "value": "5.1 Dolby Digital" },
+                        { "label": "Calificación", "value": "En trámite" },
+                        { "label": "Estreno en cines", "value": "23 de octubre de 2026" }
                     ]
                 }
             },
@@ -189,18 +111,18 @@
                 "variant": "titleGrid",
                 "data": {
                     "id": "sobre",
-                    "leftImage": "/assets/images/fotos/THE-MONEY-MAKER_BOJ0803 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                    "leftImageAlt": "La copia perfecta - Fotograma",
+                    "leftImage": "/assets/images/fotos/still_11.jpg",
+                    "leftImageAlt": "El samurái y el prisionero - Fotograma",
                     "leftTitle": "Sobre la película",
-                    "leftText": "<p><strong>LA COPIA PERFECTA</strong>, dirigida por Jean-Paul Salomé, llega a los cines el 10 de julio de 2026 de la mano de ADSO FILMS. Thriller histórico basado en hechos reales sobre Jan Bojarski, el «Cézanne de la falsificación».</p><p>Tras su estreno en el Festival de Múnich (sección Spotlight) y con más de 1.100.000 entradas vendidas en Francia, la película llega a España con Reda Kateb, Sara Giraudeau, Bastien Bouillon y Pierre Lottin.</p>",
-                    "rightTitle": "El Cézanne de la falsificación",
-                    "rightText": "<p>Está basado en hechos reales, en la historia de Jan Bojarski, el «Cézanne de la falsificación».</p><p>No estamos ante el relato de un simple delincuente, sino ante el ascenso y la caída de un ingeniero polaco cuya obsesión por la excelencia lo llevó a fabricar un papel moneda que, según los expertos de la época, poseía una calidad superior al oficial.</p><p>Su técnica era tan depurada y su firma tan invisible que la policía francesa pasó años persiguiendo a una red inexistente, convencida de que solo una organización industrial con tecnología de punta podría alcanzar semejante grado de maestría. Nadie sospechaba que el cerebro detrás del caos económico era un hombre de familia tranquilo que dedicaba meses enteros a grabar una sola placa de cobre con la precisión de un cirujano.</p>",
-                    "rightImage": "/assets/images/fotos/LAffaire_Bojarski_BOJ6032b © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                    "rightImageAlt": "La copia perfecta - Fotograma",
+                    "leftText": "<p><strong>EL SAMURÁI Y EL PRISIONERO</strong> (Kokurôjô), escrita y dirigida por Kiyoshi Kurosawa, llega a los cines el <strong>23 de octubre de 2026</strong> de la mano de ADSO FILMS. Inspirada en la novela de Honobu Yonezawa, la película formará parte de la Sección Òrbita del Festival de Sitges 2026.</p><p>Tras su paso por Cannes Premiere 2026 y el circuito internacional (Fantasia, Sydney, Bucheon, Melbourne), consolida a Kurosawa como una de las voces imprescindibles del cine de autor contemporáneo.</p>",
+                    "rightTitle": "Fenómeno en Japón",
+                    "rightText": "<p>La película se ha convertido en un fenómeno en Japón: la producción japonesa más vista de su momento, alcanzando el nº 3 en la taquilla global y recaudando más de 6 millones de dólares.</p><p>El nuevo trabajo del aclamado cineasta —reconocido por títulos como <em>Cure</em>, <em>Pulse</em> o <em>Tokyo Sonata</em>— construye un relato sobrio y atmosférico en el que lo histórico se combina con una mirada profundamente contemporánea. Silencio, espacio y tensión latente definen un giro hacia el cine de época sin abandonar las constantes de su obra: la condición humana, el conflicto moral y las tensiones invisibles entre sus personajes.</p>",
+                    "rightImage": "/assets/images/fotos/still_26.jpg",
+                    "rightImageAlt": "El samurái y el prisionero - Fotograma",
                     "aboutFilm": {
-                        "title": "De la realidad a la pantalla",
-                        "left": "<p>Anne Bojarski creció sin saber qué pasaba realmente en la vida privada de sus padres y eso le generó lo que ella misma llama un «trauma». Tenía 15 años cuando por fin se enteró de todo. La policía había ido a arrestar a su padre, mientras su madre le decía: «Parece que tu padre es falsificador».</p><p>Como la habían enseñado a no ser curiosa, se pasó la vida explorando los estragos de las verdades no dichas. «Mi padre era tierno, yo sentía que me quería, pero faltaban las palabras...», reconoce.</p><p>Hizo de esto su profesión, trabajando en comunicación corporativa y gestión emocional, ayudando a quienes se sienten excluidos del lenguaje. Y es que a ella fueron las palabras las que la salvaron. Uno de los talleres que impartía se titulaba: «Atreverse a hablar, saber hablar».</p><blockquote>«Mi padre tenía el instinto de protegernos, pero no sabía cómo crear un vínculo. Entendí mejor su lógica cuando descubrí la película de Jean-Paul Salomé; ahí todo cobró sentido, mientras que antes no lo tenía...».</blockquote><p>En la pantalla no vio a su padre, sino a un hombre solitario, desprendido del pasado; un pasado que ella visita ahora de buen grado para terminar de espantar los silencios.</p><blockquote>«La película calmó algo dentro de mí. Me permitió procesar el dolor con la cabeza en lugar de dejar que se quedara enterrado en las emociones...».</blockquote>",
-                        "right": "<p>La película reconstruye el taller artesanal de Bojarski y su doble vida: un ingeniero polaco que durante quince años fabricó billetes con una precisión superior a los oficiales del Banco de Francia.</p><p>Jean-Paul Salomé trabajó con documentación real —fotografías, patentes y testimonios— para mostrar el oficio técnico y la soledad de un hombre obsesionado con la excelencia.</p>"
+                        "title": "Deber, identidad y misterio",
+                        "left": "<p>Cuando Murashige Araki se rebela contra Nobunaga Oda, queda sitiado en su propio castillo. Una serie de crímenes misteriosos desata el miedo y la desconfianza entre sus filas. Forzado a aliarse con Kanbei Kuroda —estratega brillante y peligroso, prisionero en las mazmorras—, debe descubrir la verdad antes de que caiga la fortaleza.</p><p>El film propone una reflexión sobre el deber, la identidad y el peso de las decisiones individuales en contextos de violencia y transformación, más cerca de la guerra psicológica que del derramamiento de sangre.</p>",
+                        "right": "<p>Basada en la novela <em>Kokurojo</em> de Honobu Yonezawa, la adaptación combina drama histórico jidaigeki y ficción de misterio con una precisión casi quirúrgica: cada pieza del enigma está entrelazada de forma que, si faltara una sola, toda la historia podría venirse abajo.</p><blockquote>«Avanzar hacia el paraíso, retirarse hacia el infierno» — frase budista que late en el corazón de la película.</blockquote>"
                     }
                 }
             },
@@ -212,35 +134,59 @@
                     "title": "El reparto",
                     "items": [
                         {
-                            "image": "/assets/images/fotos/THE-MONEY-MAKER_MAI5368  © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "name": "Reda Kateb",
-                            "role": "Jan Bojarski",
-                            "bio": "Actor francés nacido en 1977, considerado uno de los talentos más sólidos y carismáticos de su generación. Saltó a la fama internacional con Un profeta y ha brillado en títulos como Hipócrates (por la que ganó el César) y Especiales. Conocido por su mirada profunda y su capacidad para interpretar personajes complejos y solitarios, ha trabajado también en Hollywood en películas como La noche más oscura (Zero Dark Thirty)."
+                            "image": "/assets/images/cast/cast-motoki.jpg",
+                            "name": "Masahiro Motoki",
+                            "role": "Murashige Araki",
+                            "bio": "Uno de los actores más laureados del cine japonés contemporáneo, reconocido internacionalmente por protagonizar Despedidas (Departures, 2008), ganadora del Óscar a la Mejor Película Internacional. Encarna al señor feudal Murashige Araki, un líder militar acorralado entre la traición interna y el asedio inminente."
                         },
                         {
-                            "image": "/assets/images/fotos/LAffaire_Bojarski_MAI4551b © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "name": "Sara Giraudeau",
-                            "role": "Suzanne Bojarski",
-                            "bio": "Actriz francesa nacida en 1985, ganadora del Premio César y conocida mundialmente por su papel de Marina Loiseau en la aclamada serie de espionaje Oficina de infiltrados (Le Bureau des Légendes). Hija de los icónicos actores Anny Duperey y Bernard Giraudeau, ha logrado forjar una carrera propia impecable, destacando por su sensibilidad y una voz única que mezcla fragilidad con una determinación asombrosa."
+                            "image": "/assets/images/cast/cast-suda.jpg",
+                            "name": "Masaki Suda",
+                            "role": "Kanbei Kuroda",
+                            "bio": "Una de las grandes figuras de la actuación en Japón y ganador de múltiples premios de la Academia Japonesa. Tras colaborar con Kurosawa en Cloud (2024), interpreta a Kanbei Kuroda: un brillante e impredecible estratega militar encerrado en las mazmorras, calculador resolutor de los misterios que sacuden la fortaleza."
                         },
                         {
-                            "image": "/assets/images/fotos/LAffaire_Bojarski_BOJ2379 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "name": "Bastien Bouillon",
-                            "role": "André Mattei",
-                            "bio": "Actor francés nacido en 1985, cuya carrera despegó definitivamente tras protagonizar La noche del 12, papel que le valió el César al Mejor Actor Revelación. Es un actor de una precisión quirúrgica, capaz de transmitir mucho con muy poco. Se ha convertido en un rostro imprescindible del cine francés reciente, aportando siempre un aire de misterio e inteligencia a sus personajes, como en este caso el del comisario dandi."
+                            "image": "/assets/images/cast/cast-yoshitaka.jpg",
+                            "name": "Yuriko Yoshitaka",
+                            "role": "Chiyoho",
+                            "bio": "Actriz de extensa trayectoria en cine y televisión (Gantz, Yurigokoro, Snakes and Earrings). Da vida a Chiyoho, la esposa de Murashige: una figura de firmeza moral cuyas acciones resultan clave en el destino del señor feudal."
                         },
                         {
-                            "image": "/assets/images/fotos/THE-MONEY-MAKER_MAI2915 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "name": "Pierre Lottin",
-                            "role": "Anton Dow",
-                            "bio": "Actor nacido en 1989, muy popular en Francia gracias a su vis cómica en la saga Les Tuche, pero que ha demostrado una versatilidad brutal en dramas y thrillers como La noche del 12. Es conocido por su capacidad para transformar su físico y su voz (como ese acento eslavo de la película), aportando siempre una energía auténtica y un punto de humanidad a personajes secundarios que acaban robándose el plano."
+                            "image": "/assets/images/cast/cast-odagiri.jpg",
+                            "name": "Joe Odagiri",
+                            "role": "Juemon Kori",
+                            "bio": "Actor de culto del cine de autor internacional (Bright Future, Air Doll) y colaborador habitual de Kore-eda y del propio Kurosawa. Interpreta a Juemon Kori, uno de los generales de mayor confianza en la corte del castillo."
+                        },
+                        {
+                            "image": "/assets/images/cast/cast-aoki.jpg",
+                            "name": "Munetaka Aoki",
+                            "role": "Kyuzaemon Araki",
+                            "bio": "Reconocido por sus papeles en la saga Rurouni Kenshin y Godzilla Minus One. Interpreta a Kyuzaemon Araki."
+                        },
+                        {
+                            "image": "/assets/images/cast/cast-miyadate.jpg",
+                            "name": "Ryota Miyadate",
+                            "role": "Sukesaburo Inui",
+                            "bio": "Popular artista y miembro del grupo de J-Pop Snow Man. Interpreta a Sukesaburo Inui."
+                        },
+                        {
+                            "image": "/assets/images/cast/cast-emoto.jpg",
+                            "name": "Tasuku Emoto",
+                            "role": "Sagehari Saika",
+                            "bio": "Destacado actor del cine independiente japonés (And Your Bird Can Sing). Interpreta a Sagehari Saika."
+                        },
+                        {
+                            "image": "/assets/images/cast/cast-santamaria.jpg",
+                            "name": "Yusuke Santamaria",
+                            "role": "Akioka Shironosuke",
+                            "bio": "Actor y presentador japonés. Interpreta a Akioka Shironosuke en El samurái y el prisionero."
                         }
                     ],
                     "director": {
                         "title": "Sobre el director",
-                        "text": "<p>Jean-Paul Salomé (París, 1960) es un guionista y director francés con una trayectoria consolidada en el cine comercial de calidad, especializado en equilibrar el entretenimiento con el rigor histórico y psicológico. Tras estudiar cine en la Universidad de la Sorbona, comenzó su carrera como asistente de dirección antes de debutar como realizador.</p><p>Se dio a conocer internacionalmente con éxitos de taquilla como Belphégor, el fantasma del Louvre y la superproducción Arsène Lupin, donde demostró su habilidad para manejar grandes presupuestos y narrativas de acción. Sin embargo, en los últimos años su cine ha evolucionado hacia un tono más íntimo y socialmente comprometido, logrando grandes elogios de la crítica con películas como Mamá María (La Daronne), protagonizada por Isabelle Huppert, y el thriller político Un blanco fácil (La Syndicaliste).</p><p>Su estilo se caracteriza por una dirección de actores impecable y un interés constante por personajes que se mueven en la ambigüedad moral o que desafían al sistema. Con su más reciente trabajo, continúa explorando la reconstrucción histórica y la complejidad de las relaciones humanas, reafirmándose como uno de los narradores más versátiles del cine europeo contemporáneo.</p>",
-                        "image": "/assets/images/LAffaire_Bojarski_MAI3279@ 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                        "imageAlt": "Jean-Paul Salomé"
+                        "text": "<p>Kiyoshi Kurosawa (Kobe, 1955) es uno de los autores más influyentes del cine japonés contemporáneo. Su filmografía transita entre el thriller, el terror psicológico y el drama, con obras como <em>Cure</em> (1997), <em>Pulse</em> (2001) o <em>Tokyo Sonata</em> (2008), esta última galardonada en Cannes (Un Certain Regard – Premio del Jurado).</p><p>Entre sus trabajos recientes destacan <em>Cloud</em>, <em>Chime</em>, <em>Serpent’s Path</em> y <em>La mujer del espía</em>. Su cine se caracteriza por una atmósfera inquietante, un uso expresivo del espacio y una mirada única sobre la alienación y las relaciones humanas.</p><p><em>El samurái y el prisionero</em> supone una nueva incursión en su universo creativo, trasladando sus inquietudes temáticas al Japón histórico del periodo Sengoku.</p>",
+                        "image": "/assets/images/fotos/still_34.jpg",
+                        "imageAlt": "El samurái y el prisionero — Kiyoshi Kurosawa"
                     }
                 }
             },
@@ -250,116 +196,47 @@
                 "data": {
                     "id": "entrevista",
                     "title": "Entrevista con el director",
-                    "subtitle": "Jean-Paul Salomé",
+                    "subtitle": "Kiyoshi Kurosawa",
                     "pages": [
                         {
-                            "subtitle": "Jean-Paul Salomé",
+                            "subtitle": "Kiyoshi Kurosawa",
                             "items": [
                                 {
-                                    "question": "¿Cómo te enteraste de la historia de Bojarski?",
-                                    "answer": "Fue el productor Jean-Baptiste Dupont quien me contó esta historia hace ya tiempo, justo cuando se estrenaba Mamá María. Le pareció que era un tema que me iba como anillo al dedo. Al principio, el proyecto iba sobre la relación entre un padre y un hijo (una idea de Marie-France Huster), pero lo que leí en internet sobre Bojarski me resultó muchísimo más interesante. Me enganchó ese tipo solo, con su maleta y sus billetes; un personaje muy al estilo Simenon que me llegó a conmover. Vi que ahí había potencial para una historia potente y me puse a trabajar con un guionista joven, Bastien Daret. Por cosas de la producción, acabé volviendo con Bertrand Faivre, que ya me había producido Un blanco fácil, y él se unió a Florence Gastaud, que ya estaba metida en el proyecto."
+                                    "question": "¿Cómo llegaste a leer la novela de Honobu Yonezawa?",
+                                    "answer": "La novela había ganado una serie de premios literarios en Japón y era muy conocida. Yo no suelo leer mucha ficción, así que no tenía ni idea hasta que mi productora me la recomendó. Llevaba tiempo interesado en el señor feudal de la era Sengoku, Murashige Araki. En mi primera lectura me di cuenta de que era un tipo de libro inusual para Japón: una novela de misterio sorprendentemente lógica y meticulosamente construida. Era enormemente entretenida, y sentí que adaptarla al cine sería un desafío realmente significativo."
                                 },
                                 {
-                                    "question": "¿Había mucha documentación sobre él?",
-                                    "answer": "Conocimos a Jacques Briod, un periodista suizo que es un apasionado de Bojarski y que tenía un montón de documentos. Gracias a él pudimos ver fotos reales, incluso las que salen al final de la peli. También tenía copias de todas sus patentes, lo que nos sirvió para mostrar sus inventos (todos son reales, menos el cepillo de dientes eléctrico). Lo más increíble es que Bojarski fabricó él mismo todas las máquinas —prensas, planchas, mezcladoras— para hacer los billetes falsos. La policía las enterró en su casa, pero como quedaban las fotos y los planos, pude recrear el taller donde curraba. El tío se lo hacía todo: fabricaba el papel con papel de fumar OCB y papel de calco, y hasta la tinta, a la que le echaba aspirina, tal como se ve en la película. También llegamos a conocer a su hija, Anne Bojarski. «Intentar encontrar la verdad con un padre que se dedicaba a falsificar...», nos soltó ella con una sonrisa. Lo cierto es que no tenía ni idea de lo que su padre estaba tramando realmente."
+                                    "question": "La novela combina drama histórico y misterio. ¿Cómo abordaste la adaptación?",
+                                    "answer": "Al ser un misterio, la historia depende de un crimen, un móvil y un método, entrelazados de forma tan precisa que, si faltara una sola pieza, toda la historia podría venirse abajo. Tuvimos que ser extraordinariamente cuidadosos con el guion. Pero más allá de los rompecabezas criminales, la mayor fascinación reside en el misterio que rodea las palabras y acciones del protagonista, Murashige Araki: un señor feudal muy distinto a cualquier convencional del periodo Sengoku."
                                 },
                                 {
-                                    "question": "¿Cómo te las apañaste para reconstruir su historia, sobre todo en lo que respecta a su vida familiar?",
-                                    "answer": "Con el tema de la relación de pareja, lógicamente tuvimos que inventar algunas cosas. Suzanne sospecha al principio, pero prefiere no saber, hasta que al final descubre todo el pastel. Nuestro trabajo fue reinventar toda la progresión dramática de su historia. Es pura dramaturgia centrada en un secreto que, al final, acaba minando la intimidad de la pareja."
+                                    "question": "¿Cómo abordaste esta época histórica? ¿Realismo o estilización?",
+                                    "answer": "No quería inventar un estilo nuevo de drama de época. Me propuse hacer un jidaigeki extremadamente ortodoxo, del tipo que hoy es raro de ver. El público contemporáneo ha olvidado en gran medida los grandes dramas de época de las décadas de 1940 y 1950. Al mismo tiempo, aspiraba a la forma clásica contando una historia contemporánea. El verdadero Murashige Araki tenía un pensamiento sorprendentemente moderno para el siglo XVI: un protagonista ideal para hablar tanto a la historia del cine como a nuestro presente."
                                 },
                                 {
-                                    "question": "También está la otra pareja clave de la película: la que forman Bojarski y el comisario Mattei...",
-                                    "answer": "Sí, esa es la columna vertebral de la historia. El comisario Mattei (que en la vida real se llamaba Benamou) le estuvo siguiendo la pista a Bojarski durante 15 años. Persiguió a todo tipo de falsificadores, pero después de tanto tiempo buscando a Bojarski, es fácil imaginar que acabó fascinado por él."
-                                },
-                                {
-                                    "question": "¿Llegaron a conocerse de verdad tal y como lo enseñas en la peli?",
-                                    "answer": "Puede ser. No podíamos descartar que hubiera habido un encuentro y, sobre todo, nos apetecía muchísimo tener una escena en la que se vieran las caras, así que nos imaginamos esa secuencia en el bar del hotel de Vichy."
-                                },
-                                {
-                                    "question": "Donde Bojarski se pone en peligro aposta...",
-                                    "answer": "Tenía sed de reconocimiento y sentía esa necesidad de arriesgarse. Incluso de forma inconsciente, algo le empujaba a darse a conocer. También te puedes imaginar que sentía ese subidón típico de los jugadores que se lo apuestan todo a una carta."
-                                },
-                                {
-                                    "question": "Como cualquier artista, quería que se reconociera su talento...",
-                                    "answer": "Sí, y de hecho marcaba sus billetes falsos con diferencias minúsculas que servían como firma. La verdad es que sus billetes eran más bonitos que los del Banco de Francia. Les dedicaba una cantidad de tiempo increíble. Cada vez que el Banco de Francia cambiaba los diseños para luchar contra la falsificación, él tenía que empezar de cero. Tardaba un año entero en grabar las planchas nuevas; era un curro colosal. Se dejó la vista y las cervicales en ello, y luego se mataba a viajar por todo el país para colocar los billetes sin que lo trincaran. En el Banco de Francia, Bojarski es un dios. Tienen cajas fuertes llenas de sus falsificaciones. De hecho, sus billetes valen una pasta."
-                                },
-                                {
-                                    "question": "¿En qué sentido te sientes cercano a este hombre?",
-                                    "answer": "Me identifiqué mucho con su soledad. Ese momento en el que crea, en el que descubre cosas... Esa necesidad suya de estar encerrado en un espacio propio. De niño, yo sentía esa misma necesidad de apartarme del mundo para jugar. Esa sed de aislamiento me impactó desde el principio. Por eso me empeñé en rodar todas las escenas en las que sale trabajando: quería mostrar el lado técnico de su oficio y compartir lo meticuloso que era su arte. Su soledad era algo fundamental. Esa mezcla entre la necesidad de esconderse y la de ser reconocido es lo que me hace sentirlo cerca."
+                                    "question": "La frase «avanzar hacia el paraíso, retirarse hacia el infierno» es central. ¿Tiene una dimensión filosófica o política?",
+                                    "answer": "Se origina en el antiguo budismo japonés, pero sigue aplicándose hoy. Todo el mundo sabe cuánta miseria siembran las posturas absurdas de quienes están en el poder y se ven encadenados por esas mismas palabras. En ese sentido, la frase que pronuncia Chiyoho cerca del final —«Hay paraíso incluso para aquellos que se retiran»— tiene una influencia enorme en las acciones posteriores de Murashige y un peso tremendo para mí también."
                                 }
                             ]
                         },
                         {
-                            "subtitle": "Jean-Paul Salomé · II",
+                            "subtitle": "Kiyoshi Kurosawa · II",
                             "items": [
                                 {
-                                    "question": "Bojarski también era un inmigrante. Tenía una cuenta pendiente que saldar y una herida que curar...",
-                                    "answer": "Claro, uno inevitablemente piensa en lo que pasa hoy en día. Hay similitudes con nuestra época, donde el hecho de que se necesite mano de obra no quita que haya rechazo. Por muy excepcional que fuera Bojarski, no recibió ninguna ayuda. Sentí que esto podía resonar con lo que vivimos actualmente. Este contexto me pareció aún más interesante porque explica por qué Bojarski tuvo que «reconvertir» su genialidad de esa manera."
+                                    "question": "¿Cómo gestionas la violencia en tu puesta en escena?",
+                                    "answer": "He hecho muchas películas violentas, pero no soy fan de las representaciones explícitas. Si quieres violencia real, hoy la encuentras en YouTube; eso no es cine. La violencia en el cine tiene que ser real y contenida al mismo tiempo. Es ficción, dirección e interpretación: un momento crítico que pone a prueba al director y a los actores. En el instante en que empiezas a alardear de esa técnica, una flagrante artificialidad llena la pantalla."
                                 },
                                 {
-                                    "question": "Es raro que una historia real tenga tantísima carga novelesca...",
-                                    "answer": "Todos los detalles de la película son ciertos. Por supuesto, hemos adornado algunas partes y también condensado ciertos elementos, como el hecho de que al principio trabajó para la banda de los «Traction Avant», que estaba formada por matones y antiguos colaboracionistas. Él les imprimía billetes falsos, pero en un momento dado se dio cuenta de que no estaba hecho para trabajar con esa calaña. Aprovechó la primera oportunidad que tuvo para largarse y empezar su carrera en solitario."
+                                    "question": "¿Cómo hiciste el casting de Masaki Suda y Masahiro Motoki?",
+                                    "answer": "Entre los actores japoneses de treinta y pocos, simplemente no hay nadie más aparte de Masaki Suda que pueda interpretar a alguien tan ambiguo y complejo: cuyas verdaderas intenciones son imposibles de leer, que puede pasar de santo a villano en un instante. Para Murashige, Kanbei es a veces aliado, a veces sirviente y a veces algo casi demoníaco. El verdadero eje, sin embargo, es Murashige: cómo un hombre de inmenso poder renuncia a ese poder y alcanza su libertad. Masahiro Motoki interpretó esa transformación de 180 grados con absoluta perfección."
                                 },
                                 {
-                                    "question": "¿Pensaste en Reda Kateb desde el principio?",
-                                    "answer": "Sí, pensé en él inmediatamente. No me importaba que no fuera polaco; sabía que él sería el personaje. Los dos habíamos ido a ver una obra de teatro protagonizada por Isabelle Huppert. Cenamos juntos después y, solo de observarlo, supe que había encontrado a «mi» Bojarski. Este papel era para él. Se lo comenté y fue siguiendo los pasos principales del guion. Escribir con alguien en mente es estimulante, te inspira y además es cómodo; te permite avanzar más rápido. Aun así, no fue fácil sacarlo adelante. Pero pasó lo mismo con Isabelle Huppert en Mamá María: había gente que no la veía en ese registro de comedia."
+                                    "question": "¿Te identificas más con el samurái que quiere saber o con el prisionero que busca explicar?",
+                                    "answer": "En una película, el autor tiene la obligación de ofrecer una respuesta a cada misterio que plantea. Al mismo tiempo, no creo necesario explicar las razones detrás de las acciones del protagonista. Murashige va resolviendo los misterios con precisión, pero la razón por la que finalmente abandona el castillo nunca se explica. Históricamente lo hizo de forma repentina; yo simplemente lo retraté tal como sucedió."
                                 },
                                 {
-                                    "question": "¿Qué tipo de dirección le diste a Reda Kateb?",
-                                    "answer": "Quería dejarle espacio para que le diera vida al personaje. Quería que tuviera tiempo para expresar los matices, los huecos, los silencios. Esos momentos eran necesarios —todos lo sabíamos—, hacía falta que corriera el aire, y surgió de forma natural porque Reda estaba muy comprometido. Se pueden transmitir muchísimas cosas sin necesidad de diálogo. Reda, al igual que Sara (Giraudeau), expresaba un montón solo con la mirada. No necesitaban aferrarse al texto. Cuando trabajas con una actriz como Isabelle Huppert, entiendes que detrás de su interpretación hay todo un mundo creado por ella; y cuando has tenido la suerte de vivir eso, quieres volver a encontrarlo con otros actores. Hay una diferencia real entre los buenos actores y los que son verdaderamente grandes."
-                                },
-                                {
-                                    "question": "¿Cómo fuiste perfilando el personaje de Suzanne, que interpreta Sara Giraudeau?",
-                                    "answer": "Delphine Gleize se unió a nosotros durante el proceso de escritura para ayudarnos a definir mejor el personaje, sobre todo para encontrar el equilibrio justo. No queríamos caer en una falsa reinterpretación moderna; teníamos que ser fieles al espíritu de la época, pero haciendo que esta mujer fuera un personaje interesante. Sara se tomó el papel muy a pecho. En seguida vio la riqueza del personaje y entendió lo que estaba en juego. Se hizo con el papel de forma muy natural."
-                                },
-                                {
-                                    "question": "Reda Kateb y Sara Giraudeau forman una pareja que es, a la vez, inesperada y muy auténtica...",
-                                    "answer": "Cuando hago un casting, siempre intento ponerme en el lugar del público. ¿Qué parejas no he visto todavía? Además, es la primera vez que, en una de mis películas, sigo la historia de una pareja a lo largo del tiempo mientras atraviesan crisis. Eso me daba bastante miedo. El dúo de actores tenía que funcionar bien. Reda había dirigido a Sara en Sur un fil, ya la conocía, y los dos tenían muchísimas ganas de trabajar juntos."
-                                },
-                                {
-                                    "question": "Bastien Bouillon interpreta a un comisario de policía que es casi lo opuesto a Reda Kateb...",
-                                    "answer": "Y se marca una actuación que no tiene nada que ver con lo que le hemos visto hacer hasta ahora. Intentamos que este comisario Mattei fuera un personaje muy al estilo «Melville». Resulta que el comisario real era un dandi, un apasionado de Estados Unidos que siempre iba impecable: con su pasador de corbata, su sombrero y todo el kit. Tuve la suerte de escuchar una entrevista de su mujer, que era una gran burguesa del distrito 16 de París, y nos dio muchísimos detalles sobre cómo se comportaba su marido. Con Bastien, nos imaginamos a un personaje de cine negro un poco atípico, en la línea de Paul Meurisse, que tenía una forma de hablar muy suya. Bastien se inspiró en eso y consiguió dar con esa dicción tan particular. Es un actor de método, siempre buscando hasta el más mínimo detalle. Aporta muchísimo, tiene un montón de ideas."
-                                },
-                                {
-                                    "question": "También está Pierre Lottin...",
-                                    "answer": "Él sugirió enseguida usar un acento eslavo. Resulta que su madre es rusa y se siente bastante cómodo con el acento ruso-polaco; solo tuvo que pulirlo un poco con un preparador. A mí me daba miedo que ese acento acabara cansando durante toda la película, pero me convenció para mantenerlo hasta el final, y tenía razón. Te puedes imaginar perfectamente que Bojarski hizo todo lo posible por perder su acento, mientras que su amigo lo mantiene porque no tiene sus mismas motivaciones."
-                                }
-                            ]
-                        },
-                        {
-                            "subtitle": "Jean-Paul Salomé · III",
-                            "items": [
-                                {
-                                    "question": "Hablemos de la reconstrucción histórica. ¿Cómo consigues que sea auténtica sin que parezca rígida o demasiado «maquillada»?",
-                                    "answer": "Hacía mucho tiempo que no rodaba una peli de época con vestuario. Te quita tanta energía que puedes acabar perdiendo de vista lo que de verdad importa. Pero, al final, me apetecía volver a meterme en ese jardín. Captar la verdad de la época era parte del reto. Al mismo tiempo, no quería obsesionarme demasiado con eso; para mí lo más importante era que el corazón de la película latiera. Es mejor tener alguna imprecisión histórica que una película sin vida. Todos compartíamos esa visión, así que hicimos un gran trabajo previo para poder liberarnos de esa obsesión por el dato histórico. Planificamos los planos al milímetro con Julien Hirsh (el director de fotografía), aunque luego cambiáramos cosas durante el rodaje. Mantuvimos la flexibilidad dentro de esa planificación previa, apostando por un formato clásico, sin trucos. Trabajar con ese formato te obliga a posicionar a la gente de otra forma, algo que encaja muy bien con la época. Lo mismo para los personajes. Nada de plásticos ni prótesis para envejecerlos. Cambian un poco, pero en veinte años, sobre todo a esas edades, la gente no cambia tanto. No quería que los actores se pasaran horas en maquillaje. No quería que se convirtiera en una pesadilla logística... ¡bueno, en parte ya lo era! Pero tuve un equipo increíble que me quitó mucho peso de encima."
-                                },
-                                {
-                                    "question": "Es de todo menos una peli de gánsteres, a pesar de la escena inicial...",
-                                    "answer": "Aun así, yo quería una peli de cine negro; disfruté mucho metiéndome en la escritura de una historia criminal muy masculina. Antes del rodaje, el equipo y yo volvimos a ver muchos clásicos del cine policíaco francés: desde No toquéis el parné hasta El círculo rojo, Hasta el último aliento, Rififí e incluso Razzia. Reda también se las volvió a ver todas."
-                                },
-                                {
-                                    "question": "¿Sueles hacer ensayos?",
-                                    "answer": "Poco, la verdad es que no me gusta mucho. Prefiero que esté el decorado, el atrezo, el contexto visual. Podemos hacer una lectura para retocar algunas cosas, sí, pero eso de ensayar en una nave industrial... no. Además, me gusta esa sensación de ir a contrarreloj, de rodar un poco bajo presión."
-                                },
-                                {
-                                    "question": "En tu opinión, ¿cómo es que un hombre tan excepcional, con un destino tan fuera de lo común, no ha inspirado a más novelistas o cineastas?",
-                                    "answer": "Pues mejor para mí. Tuvo una vida bastante increíble, pero para descubrirla tenías que interesarte de verdad y rascar mucho."
-                                },
-                                {
-                                    "question": "¿Qué etapa prefieres: escribir, rodar o montar?",
-                                    "answer": "Me gustan todas, pero el rodaje es un poco como el recreo, aunque sea agotador. Me encanta estar con el equipo, los técnicos, los actores... es un momento alegre. Formamos una especie de compañía de teatro y eso me chifla. También disfruto mucho con el montaje. Es curioso porque no siempre la toma que más te gustó en el rodaje acaba siendo la mejor al final."
-                                },
-                                {
-                                    "question": "¿Cuántas tomas sueles hacer?",
-                                    "answer": "A veces 2, a veces 8. Pero nunca 20."
-                                },
-                                {
-                                    "question": "¿Dónde habéis rodado?",
-                                    "answer": "Tuvimos nueve semanas de rodaje, así que hubo que ir rápido. Rodamos durante 45 días en París, Lyon y mucho en Vichy, que es una ciudad que se ha mantenido muy fiel a su pasado. Pero para una peli de época, con tantos decorados, personajes, extras y diferentes saltos temporales, no es tanto tiempo."
-                                },
-                                {
-                                    "question": "La música, sobre todo al principio, marca mucho el tono...",
-                                    "answer": "Quería explorar un universo musical distinto. Conocí a Mathieu Lambolley y me propuso mezclar ruidos mecánicos con notas musicales, lo que acabó dando forma a gran parte de la banda sonora. Y, sobre todo, desde la primera lectura del guion, antes incluso de empezar a rodar, me propuso dos o tres temas que me cautivaron al momento y que luego pudo desarrollar durante el montaje. Con Valérie Deseine, mi montadora, pudimos montar la peli con su música desde el principio, ¡y eso es un auténtico lujo!"
+                                    "question": "¿De qué maneras conecta esta película con tus trabajos anteriores de terror?",
+                                    "answer": "No soy un especialista en terror; siempre he aspirado a ser un artesano capaz de abordar cualquier género. Cuando llegó la oferta de un drama de época basado en una gran novela, no había opción de rechazarla. No tengo interés en dejar mis huellas dactilares en una película. Y, sin embargo, puede haber algún hilo conductor entre el conjunto de mis películas y esta. Encontrarlo es trabajo de críticos y espectadores. Con este nuevo largometraje, espero en silencio que vuelva a suceder lo mismo."
                                 }
                             ]
                         }
@@ -371,18 +248,16 @@
                 "variant": "list",
                 "data": {
                     "id": "premios",
-                    "title": "Premios y festivales",
-                    "backgroundImage": "images/fotos/LAffaire_Bojarski_MAI6170 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
+                    "title": "Festivales y reconocimientos",
+                    "backgroundImage": "images/fotos/still_35.jpg",
                     "items": [
-                        {
-                            "text": "Festival de Múnich — Sección Spotlight"
-                        },
-                        {
-                            "text": "Más de 1.100.000 entradas vendidas en Francia"
-                        },
-                        {
-                            "text": "Estreno en cines en España: 10 de julio de 2026"
-                        }
+                        { "text": "Festival de Cannes 2026 — Official Selection / Cannes Premiere" },
+                        { "text": "Festival de Sitges 2026 — Sección Òrbita" },
+                        { "text": "Fantasia Film Festival 2026" },
+                        { "text": "Sydney Film Festival 2026" },
+                        { "text": "Bucheon International Fantastic Film Festival 2026" },
+                        { "text": "Melbourne International Film Festival 2026" },
+                        { "text": "Producción japonesa más vista — nº 3 taquilla global (+6 M$)" }
                     ]
                 }
             },
@@ -392,60 +267,24 @@
                 "data": {
                     "id": "galeria",
                     "title": "Galería",
-                    "backgroundImage": "images/fotos/THE-MONEY-MAKER_MAI4676 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
+                    "backgroundImage": "images/fotos/still_06.jpg",
                     "images": [
-                        {
-                            "image": "assets/images/fotos/LAffaire_Bojarski_BOJ1944 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "title": "La copia perfecta - Imagen 1"
-                        },
-                        {
-                            "image": "assets/images/fotos/LAffaire_Bojarski_BOJ2379 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "title": "La copia perfecta - Imagen 2"
-                        },
-                        {
-                            "image": "assets/images/fotos/LAffaire_Bojarski_BOJ2427 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "title": "La copia perfecta - Imagen 3"
-                        },
-                        {
-                            "image": "assets/images/fotos/LAffaire_Bojarski_BOJ6032b © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "title": "La copia perfecta - Imagen 4"
-                        },
-                        {
-                            "image": "assets/images/fotos/LAffaire_Bojarski_MAI4551b © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "title": "La copia perfecta - Imagen 5"
-                        },
-                        {
-                            "image": "assets/images/fotos/LAffaire_Bojarski_MAI6170 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "title": "La copia perfecta - Imagen 6"
-                        },
-                        {
-                            "image": "assets/images/fotos/LAffaire_Bojarski_BOJ0779b © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "title": "La copia perfecta - Imagen 7"
-                        },
-                        {
-                            "image": "assets/images/fotos/THE-MONEY-MAKER_BOJ0803 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "title": "La copia perfecta - Imagen 8"
-                        },
-                        {
-                            "image": "assets/images/fotos/THE-MONEY-MAKER_BOJ1742 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "title": "La copia perfecta - Imagen 9"
-                        },
-                        {
-                            "image": "assets/images/fotos/THE-MONEY-MAKER_BOJ2753 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "title": "La copia perfecta - Imagen 10"
-                        },
-                        {
-                            "image": "assets/images/fotos/THE-MONEY-MAKER_MAI2915 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "title": "La copia perfecta - Imagen 11"
-                        },
-                        {
-                            "image": "assets/images/fotos/THE-MONEY-MAKER_MAI4676 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "title": "La copia perfecta - Imagen 12"
-                        },
-                        {
-                            "image": "assets/images/fotos/THE-MONEY-MAKER_MAI5368  © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                            "title": "La copia perfecta - Imagen 13"
-                        }
+                        { "image": "assets/images/fotos/still_01.jpg", "title": "El samurái y el prisionero — 1" },
+                        { "image": "assets/images/fotos/still_02.jpg", "title": "El samurái y el prisionero — 2" },
+                        { "image": "assets/images/fotos/still_04.jpg", "title": "El samurái y el prisionero — 3" },
+                        { "image": "assets/images/fotos/still_06.jpg", "title": "El samurái y el prisionero — 4" },
+                        { "image": "assets/images/fotos/still_08.jpg", "title": "El samurái y el prisionero — 5" },
+                        { "image": "assets/images/fotos/still_10.jpg", "title": "El samurái y el prisionero — 6" },
+                        { "image": "assets/images/fotos/still_11.jpg", "title": "El samurái y el prisionero — 7" },
+                        { "image": "assets/images/fotos/still_16.jpg", "title": "El samurái y el prisionero — 8" },
+                        { "image": "assets/images/fotos/still_18.jpg", "title": "El samurái y el prisionero — 9" },
+                        { "image": "assets/images/fotos/still_20.jpg", "title": "El samurái y el prisionero — 10" },
+                        { "image": "assets/images/fotos/still_23.jpg", "title": "El samurái y el prisionero — 11" },
+                        { "image": "assets/images/fotos/still_26.jpg", "title": "El samurái y el prisionero — 12" },
+                        { "image": "assets/images/fotos/still_34.jpg", "title": "El samurái y el prisionero — 13" },
+                        { "image": "assets/images/fotos/still_36.jpg", "title": "El samurái y el prisionero — 14" },
+                        { "image": "assets/images/fotos/still_38.jpg", "title": "El samurái y el prisionero — 15" },
+                        { "image": "assets/images/fotos/still_42.jpg", "title": "El samurái y el prisionero — 16" }
                     ]
                 }
             },
@@ -455,48 +294,48 @@
                     "id": "opiniones",
                     "title": "La prensa ha dicho...",
                     "background": null,
-                    "backgroundImage": "images/fotos/THE-MONEY-MAKER_MAI5368  © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
+                    "backgroundImage": "images/fotos/still_42.jpg",
                     "quotes": [
                         {
                             "image": null,
-                            "text": "Brillante experiencia cinematográfica.",
+                            "text": "Es a la vez un misterio criminal y una epopeya fascinante.",
                             "authorName": "",
-                            "authorMedia": "CINEUROPA",
+                            "authorMedia": "THE WRAP",
                             "linkURL": ""
                         },
                         {
                             "image": null,
-                            "text": "¡La copia perfecta es todo un éxito!",
+                            "text": "Esta película magistral es una de las mejores de Kurosawa.",
                             "authorName": "",
-                            "authorMedia": "LE FIGARO",
+                            "authorMedia": "ROGEREBERT.COM",
                             "linkURL": ""
                         },
                         {
                             "image": null,
-                            "text": "Emocionante y magníficamente interpretada por Reda Kateb, Sara Giraudeau y Bastien Bouillon.",
+                            "text": "Inteligente, intrigante y cautivadora.",
                             "authorName": "",
-                            "authorMedia": "LE PARISIEN",
+                            "authorMedia": "SOUTH CHINA MORNING POST",
                             "linkURL": ""
                         },
                         {
                             "image": null,
-                            "text": "Thriller histórico tan novelesco como minucioso.",
+                            "text": "Una obra magníficamente montada que se inclina más hacia la guerra psicológica que hacia el derramamiento de sangre.",
                             "authorName": "",
-                            "authorMedia": "TÉLÉRAMA",
+                            "authorMedia": "SCREENDAILY",
                             "linkURL": ""
                         },
                         {
                             "image": null,
-                            "text": "Biopic apasionante.",
+                            "text": "Kurosawa sigue demostrando una capacidad única para generar inquietud y profundidad emocional.",
                             "authorName": "",
-                            "authorMedia": "PARIS MATCH",
+                            "authorMedia": "THE HOLLYWOOD REPORTER",
                             "linkURL": ""
                         },
                         {
                             "image": null,
-                            "text": "Excelente thriller.",
+                            "text": "Adaptación exuberante, absorbente, de estilo depurado, cautivadora y muy entretenida.",
                             "authorName": "",
-                            "authorMedia": "20 MINUTES",
+                            "authorMedia": "VARIETY",
                             "linkURL": ""
                         }
                     ]
@@ -508,35 +347,22 @@
                 "data": {
                     "id": "prensa",
                     "title": "Prensa",
-                    "backgroundImage": "images/fotos/THE-MONEY-MAKER_BOJ2753 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
+                    "backgroundImage": "images/fotos/still_18.jpg",
                     "text": "Accede a materiales y descarga el pressbook.",
                     "linkText": "Ir a materiales",
-                    "linkURL": "https://drive.google.com/drive/folders/1-rU3Kkqh0Y0xfJenuNzIf-ckEvpEWkDl"
-                }
-            },
-            {
-                "type": "sorteo",
-                "variant": "fade-in",
-                "data": {
-                    "id": "sorteo",
-                    "backgroundImage": "images/fotos/LAffaire_Bojarski_BOJ2427 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
-                    "bases": {
-                        "title": "Bases del sorteo",
-                        "include": "content/bases-sorteo-es.html"
-                    },
-                    "privacyText": "Adso Films, Lorens, The Travelling Set usarán la información que nos proporciones en este formulario únicamente para enviarte noticias y ofertas interesantes. No vendemos tus datos a terceros. Por favor, marca esta casilla para confirmar que podemos enviarte esta información. Puedes cambiar de opinión en cualquier momento haciendo clic en el enlace \"Darse de baja\" que hay en el pie de página de cualquier correo electrónico que recibas de nuestra parte o poniéndote en contacto con nosotros."
+                    "linkURL": "https://www.adso.tv/prensa"
                 }
             },
             {
                 "type": "logosAndShare",
                 "data": {
                     "id": "distribucion-y-comparte",
-                    "backgroundImage": "images/fotos/THE-MONEY-MAKER_BOJ2753 © 2025 Guy Ferrandis - Le Bureau Films - Les Compagnons du Cinema Large.jpeg",
+                    "backgroundImage": "images/fotos/still_23.jpg",
                     "logos": {
                         "title": "Distribuido por",
                         "logos": [
                             {
-                                "image": "/assets/images/Logotipo Adso — Medium_Baja.png",
+                                "image": "/assets/images/logo-adso.png",
                                 "title": "ADSO Films",
                                 "URL": "https://www.adso.tv",
                                 "id": ""
@@ -552,9 +378,10 @@
             "copyright": {
                 "company": "ADSO Films",
                 "logo": "",
-                "link": "https://www.adsol.fr",
+                "link": "https://www.adso.tv",
                 "texts": [
                     "Copyright © ADSO Films",
+                    "YH/K/TSATP ©2026 “KOKUROJO” Film Partners",
                     "Todos los derechos reservados"
                 ]
             },

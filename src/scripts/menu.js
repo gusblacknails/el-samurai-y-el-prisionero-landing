@@ -9,7 +9,7 @@ function menu() {
     const menu = document.querySelector('.c-menu__nav');
 
     if (menu) {
-        const links = document.querySelectorAll('.c-menu__anchor');
+        const links = document.querySelectorAll('.c-menu__anchor, .c-menu__logo');
         const toggle = document.querySelector('.c-menu__toggle');
         const modalBg = document.querySelector('.c-modal-bg');
         

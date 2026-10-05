@@ -402,13 +402,18 @@ function initSnapHorizontal(main) {
 
         // Galería: por defecto no cambiar de pantalla (la galería gestiona el wheel),
         // pero permitir salir si el usuario está en el primer/último slide y sigue scrolleando.
-        const galleryEl = e.target.closest('.c-gallery-section');
-        const inGalleryUI = e.target.closest('.c-gallery-section__wrapper') || e.target.closest('.c-gallery-section__thumbnails');
-        if (galleryEl && inGalleryUI) {
+        const nonParallaxForGallery = sections.filter(section => !section.classList.contains('c-parallax'));
+        const sectionForGallery = nonParallaxForGallery[currentSectionIndex];
+        const galleryEl = e.target.closest('.c-gallery-section')
+            || sectionForGallery?.querySelector?.('.c-gallery-section');
+        const inGalleryUI = e.target.closest('.c-gallery-section')
+            || e.target.closest('.c-gallery-section__wrapper')
+            || e.target.closest('.c-gallery-section__thumbnails');
+        if (galleryEl && inGalleryUI && sectionForGallery?.contains?.(galleryEl)) {
             const active = Number(galleryEl.dataset.activeSlide || '0');
             const count = Number(galleryEl.dataset.slideCount || '0');
             const atFirst = active <= 0;
-            const atLast = count ? active >= (count - 1) : false;
+            const atLast = count > 0 ? active >= (count - 1) : false;
             const goingNext = e.deltaY > 0;
             const goingPrev = e.deltaY < 0;
             const allowLeave = (goingNext && atLast) || (goingPrev && atFirst);
@@ -420,6 +425,8 @@ function initSnapHorizontal(main) {
         
         // Prevent default scroll
         e.preventDefault();
+
+        const deltaY = e.deltaY;
         
         const now = Date.now();
         const timeSinceLastWheel = now - lastWheelTime;
@@ -437,12 +444,12 @@ function initSnapHorizontal(main) {
             // Enable scrolling the section itself when marked as internal-scrollable
             if (currentSection.hasAttribute && currentSection.hasAttribute('data-has-internal-scroll')) {
                 if (!currentSection.__internalScrollElement) currentSection.__internalScrollElement = currentSection;
-                const scrollConsumed = scrollInternalScroll(currentSection, e.deltaY);
+                const scrollConsumed = scrollInternalScroll(currentSection, deltaY);
                 if (scrollConsumed) return;
             } else if (hasActiveInternalScroll) {
                 // Backward compatible: other components may still use the legacy check
                 if (hasActiveInternalScroll(currentSection)) {
-                    const scrollConsumed = scrollInternalScroll(currentSection, e.deltaY);
+                    const scrollConsumed = scrollInternalScroll(currentSection, deltaY);
                     if (scrollConsumed) return;
                 }
             }
@@ -455,7 +462,7 @@ function initSnapHorizontal(main) {
         
         // Debounce rapid wheel events into a single action
         wheelTimeout = setTimeout(() => {
-            const scrollDirection = e.deltaY > 0 ? 1 : -1;
+            const scrollDirection = deltaY > 0 ? 1 : -1;
             
             // Determine next section based on scroll direction
             if (scrollDirection > 0 && currentSectionIndex < nonParallaxSections.length - 1) {
@@ -519,7 +526,7 @@ function initSnapHorizontal(main) {
             const active = Number(startedGalleryEl.dataset.activeSlide || '0');
             const count = Number(startedGalleryEl.dataset.slideCount || '0');
             const atFirst = active <= 0;
-            const atLast = count ? active >= (count - 1) : false;
+            const atLast = count > 0 ? active >= (count - 1) : false;
             const goingNext = touchDiff > 0;
             const goingPrev = touchDiff < 0;
             const allowLeave = (goingNext && atLast) || (goingPrev && atFirst);
@@ -709,7 +716,7 @@ function initSnapHorizontal(main) {
     const handleInternalLink = (e) => {
         const a = e.target?.closest?.('a[href^="#"]');
         if (!a || a.getAttribute('href') === '#') return;
-        if (a.closest('.c-menu__nav')) return; // menu handles its own links (and closes menu)
+        if (a.closest('.c-menu__nav') || a.classList.contains('c-menu__logo')) return; // menu.js handles nav + logo
         const id = a.getAttribute('href').slice(1);
         if (!id) return;
         const targetEl = document.getElementById(id);

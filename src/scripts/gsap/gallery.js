@@ -56,6 +56,13 @@ function initGalleryVerticalSlider(element) {
     let dur = 0.6;
     let offsets = [];
     let ih = wrapper.offsetHeight; // Use wrapper height instead of window height
+
+    // Expose slide state for horizontal-scroll leave logic (scroll past first/last)
+    function syncGallerySlideState() {
+        element.dataset.activeSlide = String(activeSlide);
+        element.dataset.slideCount = String(slides.length);
+    }
+    syncGallerySlideState();
     
     // Create nav dots
     for (let i = 0; i < slides.length; i++) {
@@ -111,6 +118,7 @@ function initGalleryVerticalSlider(element) {
         // Make sure we're not past the end or beginning slide
         activeSlide = activeSlide < 0 ? 0 : activeSlide;
         activeSlide = activeSlide > slides.length - 1 ? slides.length - 1 : activeSlide;
+        syncGallerySlideState();
         
         if (oldSlide === activeSlide) {
             return;
@@ -197,6 +205,7 @@ function initGalleryVerticalSlider(element) {
                 // Make sure we're within bounds
                 activeSlide = activeSlide < 0 ? 0 : activeSlide;
                 activeSlide = activeSlide > slides.length - 1 ? slides.length - 1 : activeSlide;
+                syncGallerySlideState();
                 
                 if (oldSlide === activeSlide) {
                     return;

@@ -45,7 +45,11 @@ siteData, variant) %} {% if localData.heroLogo %} {% set hasLogoClass =
         
        <img src=" {{ localData.heroLogo }}" alt="{{ siteData.movieName }}" /> 
       </div>
-      {% endif %} {% if localData.buttons %}
+      {% endif %}
+      {% if localData.subtitle %}
+      <p class="c-hero__subtitle">{{ localData.subtitle }}</p>
+      {% endif %}
+      {% if localData.buttons %}
       <div class="c-hero__buttons-wrapper">
         {% for button in localData.buttons %}
         <a
